@@ -52,9 +52,13 @@ body, html {
   }
 }
 
-.stars:hover {
-  animation: pulse;
-  animation-duration: 0.5s;
+.stars {
+  &:hover {
+    animation: pulse;
+    animation-duration: 0.5s;
+  }
+
+  width: 70%;
 }
 
 button.btn:hover {
