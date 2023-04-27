@@ -5,15 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../node_modules/animate.css/animate.min.css">
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/custom.css">
 </head>
-<body class="text-center d-flex flex-column">
-  <div class="container-fluid">
-    <div class="w-100 pb-3">header</div>
-    <div class="container w-100">
-      <h1 class="display-1">hi! i'm phaedra.</h1>
-      <p>i like stars, music, and typescript.</p>
+<body>
+  <div class="gradient-bg w-100 h-100">
+    <canvas id="rocket" width="100%" height="100%"></canvas>
+    <div class="w-100 pb-3 d-none">
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid justify-content-end">
+          <span class="navbar-brand mb-0 h3">Navbar</span>
+        </div>
+      </nav>
+    </div>
+    <div class="section">
+      <div class="row align-items-center w-100">
+        <div class="col-7">
+          <h1 class="display-1">hi! i'm phaedra.</h1>
+          <p>i like stars, music, and typescript.</p>
+          <button class="btn btn-primary" onClick="document.getElementById('profile').scrollIntoView();">learn more</button>
+        </div>
+        <div class="col-5 d-flex justify-content-center">
+          <img src="../img/stars-1.svg" alt="cluster of stars" class="stars">
+        </div>
+      </div>
+    </div>
+    <hr id="profile" class="invisible">
+    <div class="section">
+      <div class="row align-items-center w-100">
+        <div class="col-5 d-flex justify-content-start">
+          <img src="../img/Mercury.svg" alt="Mercury" width="300">
+        </div>
+        <div class="col-7 text-end">
+          <h2 class="display-2">about me</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <button class="btn btn-primary">deep dive</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -24,6 +53,7 @@
   <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
   <script src="../../assets/js/vendor/popper.min.js"></script>
   <script src="../../dist/js/bootstrap.min.js"></script>
+  <script src="../js/script.js"></script>
 
 
 </body>

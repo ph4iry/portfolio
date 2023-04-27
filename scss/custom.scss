@@ -4,7 +4,7 @@
 @import "../node_modules/bootstrap/scss/functions";
 
 // Default variable overrides
-$body-bg: #27283D;
+$body-bg: #5869FF; // linear-gradient(180deg, #5869FF 0%, #3B3960 54.69%, #0A090B 100%);
 $body-color: #fff;
 
 $headings-font-family: Epilogue;
@@ -24,3 +24,47 @@ $headings-font-weight: 700;
 @import "../node_modules/bootstrap/scss/images";
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
+
+body, html {
+  height: 200%;
+}
+
+.gradient-bg {
+  background-image: linear-gradient(180deg, #5869FF 0%, #3B3960 54.69%, #0A090B 100%);
+  background-repeat: no-repeat;
+}
+
+.section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 80vh;
+  max-height: 80vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+
+  + .section {
+    margin-top: 10vh;
+  }
+}
+
+.stars:hover {
+  animation: pulse;
+  animation-duration: 0.5s;
+}
+
+button.btn:hover {
+  animation: pulse;
+  animation-duration: 1s;
+}
+
+#rocket {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
