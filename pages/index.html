@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="gradient-bg w-100">
-    <div class="space-trail">
+    <div class="space-trail w-100">
       <svg id="spaceship" x="0px" y="0px" viewBox="0 0 32 32">
         <style type="text/css">
           .st0 {
@@ -30,9 +30,18 @@
       </svg>
     
       <div id="path">
-        <svg fill="none" viewBox="0 0 453 2712" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M269.5 2.99999C269.5 2.99999 195.843 123.363 157 237C82.0609 456.237 453.483 723.581 449 991.5C443.808 1301.79 36.5035 1272.23 4.99999 1549.5C-18.7093 1758.17 200.5 1835 294 2196C326 2530 294 2708.5 294 2708.5" stroke="rgba(255, 0, 250, 0.4)" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 10" />
-        </svg>
+        <svg width="100%" viewBox="0 0 1434 2701" fill="none" xmlns="http://www.w3.org/2000/svg" invisible>
+          <path class="d-none" d="M963.537 1C681.526 652.787 65.5 304.5 57.5 762.5C49.5 1220.5 1333.12 1468.92 1425 1909.5C1516.88 2350.08 516.122 2836.5 0 2862" stroke="url(#paint0_linear_15_67)" stroke-opacity="0.75" stroke-width="5" stroke-dasharray="10 10"/>
+          <defs>
+          <linearGradient id="paint0_linear_15_67" x1="720" y1="1" x2="720" y2="2862" gradientUnits="userSpaceOnUse">
+          <stop stop-color="white" stop-opacity="0"/>
+          <stop offset="0.166667" stop-color="white"/>
+          <stop offset="0.833333" stop-color="white"/>
+          <stop offset="1" stop-color="white" stop-opacity="0"/>
+          </linearGradient>
+          </defs>
+          </svg>
+          
       </div>
     </div>
     <div class="w-100 pb-3 d-none">
@@ -46,7 +55,7 @@
       <div class="row align-items-center w-100">
         <div class="col-7">
           <h1 class="display-1">hi! i'm phaedra.</h1>
-          <p class="lead">i like stars, music, and typescript.</p>
+          <p class="lead">more details go here teehee</p>
           <button class="btn btn-primary" onClick="document.getElementById('profile').scrollIntoView();">learn more</button>
         </div>
         <div class="col-5 d-flex justify-content-center">
@@ -72,11 +81,11 @@
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <!-- <script src="../js/lib/jquery.slim.min.js"  type="module" ></script> -->
   <!-- <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script> -->
-  <script src="../node_modules/@popperjs/core/dist/umd/popper.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../js/script.js"></script>
+  <script src="../node_modules/@popperjs/core/dist/umd/popper.js" type="module"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"  type="module"></script>
+  <script src="../js/script.js" type="module"></script>
 
 
 </body>

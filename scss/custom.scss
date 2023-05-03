@@ -32,7 +32,7 @@ $headings-font-weight: 700;
 .gradient-bg {
   background-image: linear-gradient(180deg, #5869FF 0%, #3B3960 54.69%, #0A090B 100%);
   background-repeat: no-repeat;
-  height: 2167px;
+  height: 3000px;
 }
 
 .section {
@@ -81,6 +81,7 @@ button.btn:hover {
   max-width: var(--size);
   position: absolute;
   transform: rotateZ(90deg);
+  z-index: inherit;
   /* offset-path: path(
     "M269.5 2.99999C269.5 2.99999 195.843 123.363 157 237C82.0609 456.237 453.483 723.581 449 991.5C443.808 1301.79 36.5035 1272.23 4.99999 1549.5C-18.7093 1758.17 200.5 1835 294 2196C326 2530 294 2708.5 294 2708.5"
   ); */
@@ -97,6 +98,9 @@ button.btn:hover {
 
 #path {
   height: auto;
+  svg {
+    width: 80%;
+  }
 }
 
 
@@ -106,9 +110,10 @@ button.btn:hover {
   left: 0;
   width: fit-content;
   height: inherit;
-  border: 3px solid #73AD21;
+  z-index: 0;
 }
 
-#path svg {
-  width: 80%;
+* {
+  position: relative;
+  z-index: auto;
 }
