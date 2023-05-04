@@ -1727,8 +1727,6 @@ progress {
   }
 }
 .gradient-bg {
-  background-image: linear-gradient(180deg, #5869FF 0%, #3B3960 54.69%, #0A090B 100%);
-  background-repeat: no-repeat;
   height: 3000px;
 }
 
@@ -1799,16 +1797,20 @@ button.btn:hover {
 
 .space-trail {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20%;
+  right: 15%;
   width: fit-content;
-  height: inherit;
   z-index: 0;
 }
 
 * {
   position: relative;
   z-index: auto;
+}
+
+body {
+  background-image: linear-gradient(180deg, #5869FF 0%, #3B3960 54.69%, #0A090B 100%);
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=custom.css.map */

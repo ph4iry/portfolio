@@ -46,5 +46,9 @@ $(window).on('scroll', function(){
   console.clear();
   console.log(scrollPercent);
 
-  spaceship.style.setProperty("--offset-distance", scrollPercent + "%");
+  if (scrollPercent >= 15) {
+    spaceship.style.setProperty("--offset-distance", (scrollPercent - 15) + "%");
+  }
+
+  
 });

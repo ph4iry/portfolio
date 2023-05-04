@@ -597,7 +597,7 @@ spaceship.style.offsetPath = `path("${resizedPath}")`;
     const scrollPercent = s / (d - c) * 100;
     console.clear();
     console.log(scrollPercent);
-    spaceship.style.setProperty("--offset-distance", scrollPercent + "%");
+    if (scrollPercent >= 15) spaceship.style.setProperty("--offset-distance", scrollPercent - 15 + "%");
 });
 
 },{"../node_modules/svgpath":"GgURp","./lib/jquery.slim.min.js":"c2NLU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"GgURp":[function(require,module,exports) {
