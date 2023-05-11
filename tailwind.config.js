@@ -4,7 +4,11 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: ["**/*.html"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'muted': '#9DA3AE'
+      }
+    },
     fontFamily: {
       'sans': ['"Work Sans"', ...defaultTheme.fontFamily.sans],
       'mono': ['"Space Mono"', ...defaultTheme.fontFamily.mono],
