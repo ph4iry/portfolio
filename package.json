@@ -22,12 +22,9 @@
   "dependencies": {
     "@types/jquery": "^3.5.16",
     "animate.css": "^4.1.1",
-    "bootstrap": "^5.2.3",
-    "jquery": "^3.6.4",
-    "sass": "^1.62.0",
-    "svgpath": "^2.6.0"
+    "jquery": "^3.6.4"
   },
   "devDependencies": {
-    "parcel": "^2.8.3"
+    "tailwindcss": "^3.3.2"
   }
 }
