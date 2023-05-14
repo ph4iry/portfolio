@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@700;800&family=Space+Mono&family=Work+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@800&family=Space+Mono&family=Work+Sans:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,4 +6,16 @@
 
 * {
   @apply text-slate-100;
+}
+
+a > svg:hover {
+  box-shadow: 0 0 5px white; 
+}
+
+.card {
+  @apply flex flex-col bg-slate-50/5 px-5 py-5 rounded-2xl border border-slate-50/20 w-full;
+}
+
+.projects {
+  /* background: radial-gradient(58.65% 129.52% at 50% 50%, rgba(153, 0, 248, 0.25) 0%, rgba(153, 0, 248, 0) 100%), radial-gradient(50% 110.43% at 0% 100%, rgba(255, 151, 207, 0.25) 0%, rgba(255, 226, 151, 0) 100%), radial-gradient(38.26% 84.51% at 0% 0%, #98B5FF 0%, rgba(160, 255, 232, 0) 100%), radial-gradient(32.95% 72.78% at 80.56% 11.12%, rgba(255, 113, 224, 0.25) 0%, rgba(255, 113, 224, 0) 100%), radial-gradient(46.01% 101.61% at 98.75% 101.61%, rgba(88, 105, 255, 0.25) 0%, rgba(88, 105, 255, 0) 100%); */
 }

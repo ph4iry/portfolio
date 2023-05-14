@@ -1,0 +1,174 @@
+<!doctype html>
+<html class="bg-slate-950 h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./css/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="./css/orbit.css" rel="stylesheet">
+</head>
+<body class="h-full">
+  <div id="circle-orbit-container" class="hidden lg:block z-[-1]">
+    <img src="./img/planet.svg" alt="Planet" class="planet">
+    <div id="first-orbit" class="orbit-spin-short">
+      <div class="first-orbit-circle"></div>
+    </div>
+    <div id="second-orbit" class="orbit-spin-long">
+      <div class="second-orbit-circle"></div>
+    </div>
+  </div>
+  <div class="px-8 lg:pl-24 pt-4 flex flex-col lg:pr-[55vh] w-full">
+    <div class="navbar">
+      <div class="flex items-baseline space-x-4 rounded-full border-slate-50 border-solid border-2 w-full md:w-fit px-4 py-2 overflow-x-scroll md:overflow-x-hidden">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="#about" class="text-muted hover:bg-slate-700 hover:text-white rounded-full px-3 py-2 text-md font-medium">about</a>
+        <a href="#projects" class="text-muted hover:bg-slate-700 hover:text-white rounded-full px-3 py-2 text-md font-medium">projects</a>
+        <a href="#" class="text-muted hover:bg-slate-700 hover:text-white rounded-full px-3 py-2 text-md font-medium">contact</a>
+      </div>
+    </div>
+
+    <div class="mb-4 mt-36">
+      <p class="font-display text-3xl md:text-4xl">Hi,</p>
+      <p class="font-display text-6xl md:text-8xl">I'm Phaedra.</p>
+    </div>
+
+    <div class="flex h-min items-center mt-4 mb-24">
+      <div class="rounded bg-slate-800/50 w-full px-4 sm:px-16 py-6">
+        <p class="text-muted mb-2 text-lg">I am a <span class="text-slate-50">16-year-old software developer</span> from <span class="text-slate-50">Boston, MA.</span></p>
+        <div class="socials flex flex-row space-x-4">
+          <!-- LinkedIn-->
+          <a href="https://www.linkedin.com/in/phaedra-sanon-323062274/"  class="social-icon group border-4 border-slate-50 text-slate-50 hover:bg-slate-50 hover:text-slate-900 p-2 rounded-lg w-14 h-14">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="fill-slate-50 group-hover:fill-slate-900"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+            </svg>
+          </a>
+
+          <!-- Github -->
+          <a href="https://github.com/ph4iry" class="social-icon group border-4 border-slate-50 text-slate-50 hover:bg-slate-50 hover:text-slate-900 p-2 rounded-lg w-14 h-14">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="fill-slate-50 group-hover:fill-slate-900"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+            </svg>
+          </a>
+
+          <a href="mailto:phaedrasanon@gmail.com" class="social-icon group border-4 border-slate-50 text-slate-50 hover:bg-slate-50 hover:text-slate-900 p-2 rounded-lg w-14 h-14">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="fill-slate-50 group-hover:fill-slate-900"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="about" class="flex flex-col">
+      <div class="header flex flex-col items-center md:items-start mb-5">
+        <span class="flex flex-row">
+          <h1 class="font-display text-4xl md:text-6xl">
+            <i class="fa-solid fa-terminal fa-sm text-[#72BF80]"></i> About Me
+          </h1>
+        </span>
+        <p class="font-mono text-lg">welcome to my website!</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row">
+        <div class="mr-16">
+          <img src="./img/pfp.png" alt="Phaedra Sanon" class="max-w-[300px]">
+        </div>
+        <div>
+          <p class="text-center md:text-left">
+            Hello! My name is <span class="text-[#FFE297]">Phaedra Sanon</span> and I'm currently a sophomore in high school. One of my passions is being able to create things using technology, particularly web development. Seeking new opportunities to develop solutions to things, I am currently working on a handful of projects that have a real purpose. At the moment, I work at <a href="https://afhboston.org" class="underline text-[#72BF80]">Artists for Humanity</a>. Here's some of the technologies that I've been using lately:
+          </p>
+          <div class="grid grid-cols-2 gap-y-3 mt-2 p-1 self-center justify-center">
+            <span class="text-sky-500 flex flex-row">
+              <svg width="24" viewBox="0 0 511 312" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-sky-500 mr-2">
+                <path d="M249.5 214.5C158 108 16.5 152 0.491455 258.499C35.5 210 91 196.501 144 260C218 344.5 363.5 322 382.493 209.5C340.993 260.5 285 251.393 249.5 214.5Z"/>
+                <path d="M377.009 61.1923C285.509 -45.3078 144.009 -1.30768 128 105.191C163.009 56.6924 218.509 43.1929 271.509 106.692C345.509 191.192 491.009 168.692 510.001 56.1922C468.501 107.193 412.509 98.0853 377.009 61.1923Z"/>
+              </svg>Tailwind CSS
+            </span>
+            <span class="text-sky-500"><i class="fa-brands fa-figma text-sky-500 fa-xl"></i> Figma </span>
+            <span class="text-sky-500"><i class="fa-brands fa-react text-sky-500 fa-xl"></i> React </span>
+            <span class="text-sky-500"><i class="fa-brands fa-node-js text-sky-500 fa-xl"></i> Node.js </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="projects" class="my-24">
+      <div class="header flex flex-col items-center md:items-start mb-5">
+        <span class="flex flex-row">
+          <h1 class="font-display text-4xl md:text-6xl">
+            <i class="fa-solid fa-code fa-sm text-[#72BF80]"></i> Projects
+          </h1>
+        </span>
+        <p class="font-mono text-lg">what i've worked on</p>
+      </div>
+
+      <div class="projects grid grid-cols-1 md:grid-cols-2 gap-4 w-full p-1 md:p-10 rounded-lg">
+        <div class="card flex flex-col justify-between">
+          <span>
+            <img class="cover-img rounded-lg" src="https://img2.storyblok.com/1080x0/filters:format(webp)/f/127407/1200x600/30fefd872f/artopia-header.png" alt="">
+            <!-- <img src="https://img2.storyblok.com/1080x0/filters:format(webp)/f/127407/1200x600/30fefd872f/artopia-header.png" alt="ARTOPIA Donation Interactive" class="" /> -->
+            <h3 class="font-display text-3xl">ARTOPIA Donation Interactive</h3>
+            <p class="mb-2">The interactive donation station for Artist for Humanity's key fundraiser event, ARTOPIA.</p>
+          </span>
+          <button class="bg-slate-800 p-2 rounded-lg w-full">details</button>
+          <a href="https://github.com/Artists-for-Humanity/artopia-masking-demo" class="group underline text-mono">see the project on github <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+        <div class="card flex flex-col justify-between">
+          <span>
+            <img class="cover-img rounded-lg" src="./img/aspen-sis.png" alt="">
+            <h3 class="font-display text-3xl">Aspen SIS API</h3>
+            <p class="mb-2">An API to process student records held in Boston Public Schools' Student Information System, Aspen.</p>
+          </span>
+          <a href="https://github.com/ph4iry/aspen-sis" class="group underline text-mono">see the project on github <i class="fa fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="w-full bg-gray-900 py-10 px-8 lg:pl-24 flex flex-row">
+    <div class="flex flex-col">
+      <h2 class="font-display text-3xl">Phaedra Sanon</h2>
+      <p class="text-muted">Made with <i class="fa fa-star text-[#FFE297]"></i>'s and <i class="fa fa-heart text-rose-600"></i></p>
+      <div class="minis">
+        <img src="https://spotify-github-profile.vercel.app/api/view?uid=p44gq4wrzz0qlhy8prpq99n3a&cover_image=true&theme=natemoo-re&show_offline=true&background_color=121212&interchange=false&bar_color=092b08&bar_color_cover=true" alt="Now Playing on Spotify">
+        <div class="socials flex flex-row space-x-4">
+          <!-- LinkedIn-->
+          <a href="https://www.linkedin.com/in/phaedra-sanon-323062274/"  class="social-icon group border-2 border-slate-50 text-slate-50 hover:bg-slate-50 hover:text-slate-900 p-1 rounded-lg w-8 h-8">
+            <i class="fab fa-linkedin-in text-xl text-center group-hover:text-slate-900"></i>
+          </a>
+
+          <!-- Github -->
+          <a href="https://github.com/ph4iry" class="social-icon group border-2 border-slate-50 text-slate-50 hover:bg-slate-50 hover:text-slate-900 p-1 rounded-lg w-8 h-8">
+            <i class="fab fa-github text-xl text-center group-hover:text-slate-900"></i>
+          </a>
+
+          <a href="mailto:phaedrasanon@gmail.com" class="social-icon group border-2 border-slate-50 text-slate-50 hover:bg-slate-50 hover:text-slate-900 p-1 rounded-lg w-8 h-8">
+            <i class="far fa-envelope text-xl text-center group-hover:text-slate-900"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDT72Q0SnJqZxhxuIFNaGNARmvnpjqys5g",
+      authDomain: "phaedraverse.firebaseapp.com",
+      projectId: "phaedraverse",
+      storageBucket: "phaedraverse.appspot.com",
+      messagingSenderId: "301169318264",
+      appId: "1:301169318264:web:92eaa6f083a5fbedd0508d",
+      measurementId: "G-PKD4KT4TXY"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</body>
+</html>

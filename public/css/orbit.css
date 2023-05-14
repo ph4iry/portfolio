@@ -1,6 +1,6 @@
 /* ---------- Container for the orbiting circles animation ---------- */
 #circle-orbit-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
@@ -8,7 +8,12 @@
   overflow:hidden;
 }
 
-.orbit-spin {
+.orbit-spin-short {
+  -webkit-animation: spin-right 7s linear infinite;
+  animation: spin-right 7s linear infinite;
+}
+
+.orbit-spin-long {
   -webkit-animation: spin-right 10s linear infinite;
   animation: spin-right 10s linear infinite;
 }
@@ -21,7 +26,6 @@
   height: 75vh;
   border: 10px white solid;
   border-radius: 100%;
-
 }
 
 .first-orbit-circle {
@@ -31,6 +35,7 @@
   width: 3rem;
   border-radius: 100%;
   background-color: #FFF;
+  
 }
 
 #second-orbit {
@@ -41,8 +46,6 @@
   height: 90vh;
   border: 10px white solid;
   border-radius: 100%;
-  -webkit-animation: spin-right 10s linear infinite;
-  animation: spin-right 10s linear infinite;
 }
 
 .second-orbit-circle {
