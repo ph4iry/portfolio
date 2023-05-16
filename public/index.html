@@ -214,5 +214,11 @@
     const analytics = getAnalytics(app);
   </script>
   <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script>
+    //check if the url
+    if (window.location.hostname == "phaedraverse.web.app" || window.location.hostname == "phaedraverse.firebaseapp.com") {
+      window.location.href = 'https://phaedraverse.dev'; 
+    }
+  </script>
 </body>
 </html>
