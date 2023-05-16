@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@700;800&family=Space+Mono&family=Work+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@800&family=Space+Mono&family=Work+Sans:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,4 +6,20 @@
 
 * {
   @apply text-slate-100;
+}
+
+a > svg:hover {
+  box-shadow: 0 0 5px white; 
+}
+
+.card {
+  @apply flex flex-col bg-slate-50/5 px-5 py-5 rounded-2xl border border-slate-50/20 w-full;
+}
+
+.btn {
+  @apply p-2 rounded-lg w-fit;
+}
+
+.btn-block {
+  @apply w-full;
 }
