@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ---------- Container for the orbiting circles animation ---------- */
 #circle-orbit-container {
   position: fixed;
