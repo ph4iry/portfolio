@@ -8,8 +8,34 @@
   top: 0;
   right: 0;
   height: 100vh;
-  width: calc(120vh / 2);
-  overflow:hidden;
+  width: 35vh;
+  overflow: hidden;
+}
+
+#planet-navs {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 70vh;
+
+  .nav-planet:nth-child(1) { --nth-child: 1 }
+  .nav-planet:nth-child(2) { --nth-child: 2 }
+  .nav-planet:nth-child(3) { --nth-child: 3 }
+}
+
+.nav-planet {
+  right:0;
+  top:0;
+  height: 100vh;
+  position:absolute;
+  text-align:center;
+  display:flex;
+  transform: rotateZ(calc(-45deg * var(--nth-child)));
+
+  div {
+    transform: rotateZ(calc(45deg * var(--nth-child)))
+  }
 }
 
 .orbit-spin-short {
@@ -62,11 +88,12 @@
 }
 
 .planet {
-  position: absolute;
-  width: 60vh;
-  height: 60vh;
-  top: 20vh;
-  left: 30vh;
+  position: relative;
+  width: 70vh;
+  max-width: 70vh;
+  height: 70vh;
+  top: 15vh;
+  right: 0;
 }
 
 @keyframes spin-right {

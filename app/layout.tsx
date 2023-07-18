@@ -3,6 +3,9 @@ import './stars.css';
 import type { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
 import { ReactNode } from 'react';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
 
 const raleway = Raleway({ subsets: ['latin'] });
 
@@ -37,16 +40,16 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png"/>
         {/* <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" /> --> */}
-        {/* <link href="./css/output.css" rel="stylesheet"/> */}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+        {/* <link href="./css/output.css" rel="stylesheet"/>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossOrigin="anonymous" referrerPolicy="no-referrer" as="style"/> */}
         {/* <link href="./css/orbit.css" rel="stylesheet"/> */}
       </head>
-      <body className={`${raleway.className} h-screen bg-[#22252C]`}>
-        <div className="star-container opacity-25">
+      <body className={`${raleway.className} h-screen bg-[#22252C] overflow-hidden`}>
+        {/* <div id="star-container" className="opacity-25">
           <div id="stars"></div>
           <div id="stars2"></div>
           <div id="stars3"></div>
-        </div>
+        </div> */}
         <div>
           {children}
         </div>
