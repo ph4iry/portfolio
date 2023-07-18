@@ -9,7 +9,7 @@
   right: 0;
   height: 100vh;
   width: 35vh;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #planet-navs {
