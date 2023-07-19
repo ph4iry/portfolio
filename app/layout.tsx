@@ -6,7 +6,9 @@ import { Raleway } from 'next/font/google';
 import { ReactNode } from 'react';
 // import Image from 'next/image';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition, config } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 config.autoAddCss = false;
 
 const raleway = Raleway({ subsets: ['latin'] });
@@ -67,11 +69,33 @@ export default function RootLayout({
               className="w-64 h-auto"
             />
           </div>
-          <div className="">
-            contact
+          <div className="flex space-x-4 items-center">
+            <ContactIcon
+              platform="Spotify"
+              icon={faSpotify}
+              link="https://open.spotify.com/user/p44gq4wrzz0qlhy8prpq99n3a?si=e54aee13739c4016"
+            />
           </div>
         </footer>
       </body>
     </html>
+  );
+}
+
+function ContactIcon({
+  platform,
+  icon,
+  link,
+}: {
+  platform: string,
+  icon: IconDefinition,
+  link: string,
+}) {
+  return (
+    <a href={link} aria-label={platform}>
+      <div className="w-16 h-16 p-2 rounded-full bg-amber-100 hover:drop-shadow-[0_0_10px_rgba(254,243,199,0.25)] text-center text-gray-900">
+        <FontAwesomeIcon icon={icon} className="fa-3x"/>
+      </div>
+    </a>
   );
 }
