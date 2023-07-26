@@ -7,6 +7,9 @@
   position: fixed;
   top: 0;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 35vh;
   overflow: visible;
@@ -32,80 +35,24 @@
   text-align:center;
   display:flex;
   transform: rotateZ(calc(-45deg * var(--nth-child)));
-
-  div {
-    transform: rotateZ(calc(45deg * var(--nth-child)))
-  }
 }
 
-.orbit-spin-short {
-  -webkit-animation: spin-right 7s linear infinite;
-  animation: spin-right 7s linear infinite;
-}
-
-.orbit-spin-long {
-  -webkit-animation: spin-right 10s linear infinite;
-  animation: spin-right 10s linear infinite;
-}
-/* = (100 - width) / 2 */
-#first-orbit {
-  position: absolute;
-  top: 12.5vh;
-  left: calc((120vh - 75vh) / 2);
-  width: 75vh;
-  height: 75vh;
-  border: 10px white solid;
-  border-radius: 100%;
-}
-
-.first-orbit-circle {
-  position: absolute;
-  top: 50vh;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 100%;
-  background-color: #FFF;
-  
-}
-
-#second-orbit {
-  position: absolute;
-  top: 5vh;
-  left: calc((120vh - 90vh) / 2);
-  width: 90vh;
-  height: 90vh;
-  border: 10px white solid;
-  border-radius: 100%;
-}
-
-.second-orbit-circle {
-  position: absolute;
-  top: 60vh;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 100%;
-  background-color: #FFF;
+.planet-nav-img {
+  transform: rotateZ(calc(45deg * var(--nth-child)));
 }
 
 .planet {
   position: relative;
-  width: 70vh;
-  max-width: 70vh;
-  height: 70vh;
-  top: 15vh;
-  right: 0;
+  width: 60vh;
+  max-width: 60vh;
+  height: 60vh;
+  top: 0;
+  left: 50%;
 }
 
-@keyframes spin-right {
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+.classic-orbit {
+  animation: classic-spin 10s linear infinite;
 }
-
 .orbit {
   animation: spin 10s linear infinite;
 }
@@ -116,9 +63,18 @@
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform:rotate(calc(45deg * var(--nth-child)));
   }
   to {
-      transform:rotate(360deg);
+    transform:rotate(calc(360deg + 45deg * var(--nth-child)));
+  }
+}
+
+@keyframes classic-spin {
+  from {
+    transform:rotate(calc(45deg));
+  }
+  to {
+    transform:rotate(calc(360deg + 45deg));
   }
 }

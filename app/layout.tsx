@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import './globals.css';
-import './stars.css';
+import '../styles/stars.css';
 import type { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
 import { ReactNode } from 'react';
 // import Image from 'next/image';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { IconDefinition, config } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { ContactIcon } from './planets';
 config.autoAddCss = false;
 
 const raleway = Raleway({ subsets: ['latin'] });
@@ -49,24 +50,22 @@ export default function RootLayout({
         {/* <link href="./css/orbit.css" rel="stylesheet"/> */}
       </head>
       <body className={`${raleway.className} h-screen flex flex-col bg-[#22252C] overflow-hidden`}>
-        <div id="star-container" className="opacity-25">
+        {/* <div id="star-container" className="opacity-25">
           <div id="stars"></div>
           <div id="stars2"></div>
           <div id="stars3"></div>
-        </div>
-        <div>
-          {children}
-        </div>
-        <footer className="absolute bottom-0 right-0 w-full bg-slate-950/20 p-3 text-white flex justify-between">
-          <div className="">
-            <p className="text-xs">now playing on my spotify:</p>
+        </div> */}
+        {children}
+        <footer className="hidden md:flex absolute bottom-0 right-0 w-full bg-slate-950/20 p-3 text-white justify-between 2xl:min-h-[15vh]">
+          <div>
+            <p className="text-sm">now playing on my spotify:</p>
             <img
-              src="https://spotify-github-profile.vercel.app/api/view?uid=p44gq4wrzz0qlhy8prpq99n3a&cover_image=true&theme=natemoo-re&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=false"
-              alt="Now playing on spotify"
+              src="https://spotify-github-profile.vercel.app/api/view?uid=p44gq4wrzz0qlhy8prpq99n3a&cover_image=true&theme=natemoo-re&show_offline=true&background_color=121212&interchange=true&bar_color=ffffff&bar_color_cover=false"
+              alt="the current spotify song that my account is playing"
               // width="0"
               // height="0"
               sizes="100vw"
-              className="w-64 h-auto"
+              className="w-auto md:h-10 lg:h-14 hover:h-20 2xl:min-h-[9vh] 2xl:hover:h-[12vh] transition-all"
             />
           </div>
           <div className="flex space-x-4 items-center">
@@ -74,28 +73,29 @@ export default function RootLayout({
               platform="Spotify"
               icon={faSpotify}
               link="https://open.spotify.com/user/p44gq4wrzz0qlhy8prpq99n3a?si=e54aee13739c4016"
+              hoverColor="group-hover:text-[#1db954]"
+            />
+            <ContactIcon
+              platform="Linkedin"
+              icon={faLinkedinIn}
+              link="https://www.linkedin.com/in/phaedra-sanon-323062274/"
+              hoverColor="group-hover:text-[#0072b1]"
+            />
+            <ContactIcon
+              platform="Github"
+              icon={faGithub}
+              link="https://github.com/ph4iry"
+              hoverColor="group-hover:text-[#000000]"
+            />
+            <ContactIcon
+              platform="Email"
+              icon={faEnvelope}
+              link="mailto:phaedrasanon@gmail.com"
+              hoverColor="group-hover:text-[#BB001B]"
             />
           </div>
         </footer>
       </body>
     </html>
-  );
-}
-
-function ContactIcon({
-  platform,
-  icon,
-  link,
-}: {
-  platform: string,
-  icon: IconDefinition,
-  link: string,
-}) {
-  return (
-    <a href={link} aria-label={platform}>
-      <div className="w-16 h-16 p-2 rounded-full bg-amber-100 hover:drop-shadow-[0_0_10px_rgba(254,243,199,0.25)] text-center text-gray-900">
-        <FontAwesomeIcon icon={icon} className="fa-3x"/>
-      </div>
-    </a>
   );
 }
