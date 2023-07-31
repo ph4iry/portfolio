@@ -1,4 +1,4 @@
-import { PlanetNavContainer } from '../planets';
+import { PlanetNavContainer } from '../../components/planets';
 
 export default function Contact() {
   return (

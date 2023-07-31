@@ -1,5 +1,5 @@
-import { PlanetNavContainer } from '../planets';
-import { ProjectCard } from './projects';
+import { PlanetNavContainer } from '../../components/planets';
+import { ProjectCard } from '../../components/projects';
 
 export default function Project() {
   return (

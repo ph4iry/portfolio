@@ -1,5 +1,5 @@
-import { SkillCard } from './skills';
-import { BlastOffTransitionButton, PlanetNavContainer } from '../planets';
+import { SkillCard } from '../../components/skills';
+import { BlastOffTransitionButton, PlanetNavContainer } from '../../components/planets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBootstrap, faCss3, faFigma, faGithub, faHtml5, faJs, faNodeJs, faPython, faReact, faSass } from '@fortawesome/free-brands-svg-icons';
 import '@/styles/techicons.css';

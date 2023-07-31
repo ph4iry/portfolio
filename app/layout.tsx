@@ -9,7 +9,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { ContactIcon } from './planets';
+import { ContactIcon } from '../components/planets';
 config.autoAddCss = false;
 
 const raleway = Raleway({ subsets: ['latin'] });
@@ -50,11 +50,11 @@ export default function RootLayout({
         {/* <link href="./css/orbit.css" rel="stylesheet"/> */}
       </head>
       <body className={`${raleway.className} h-screen flex flex-col bg-[#22252C] overflow-hidden`}>
-        {/* <div id="star-container" className="opacity-25">
+        <div id="star-container" className="opacity-25">
           <div id="stars"></div>
           <div id="stars2"></div>
           <div id="stars3"></div>
-        </div> */}
+        </div>
         {children}
         <footer className="hidden md:flex absolute bottom-0 right-0 w-full bg-slate-950/20 p-3 text-white justify-between 2xl:min-h-[15vh]">
           <div>

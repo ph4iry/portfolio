@@ -1,5 +1,5 @@
 import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { BlastOffTransitionButton, ContactIcon, PlanetNavContainer } from './planets';
+import { BlastOffTransitionButton, ContactIcon, PlanetNavContainer } from '../components/planets';
 import { Fira_Code } from 'next/font/google';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
