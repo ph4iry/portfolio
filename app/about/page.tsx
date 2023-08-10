@@ -11,7 +11,7 @@ export default function About() {
         <PlanetNavContainer planetKey="sand"/>
         <div className="w-full md:w-[calc(100vw-70vh)] block text-center md:text-left">
           <h1 className="text-7xl font-bold text-white mb-3">hello, traveler!</h1>
-          <p className="text-white text-lg">
+          <p className="text-white text-md md:text-lg">
             I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development. At the moment, I work at Artists for Humanity as a web developer, focusing on crafting practical and user-friendly projects. My creativity extends to designing interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser. Growing in the evolving world of web development is my goal, and so I employ various technologies to enhance my skills, such as:
           </p>
 
