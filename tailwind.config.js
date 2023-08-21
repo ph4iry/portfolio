@@ -1,5 +1,8 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+// import withMT from '@material-tailwind/react/utils/withMT';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,7 +15,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
+      },
+      // colors: {
+      //   ...defaultTheme.colors,
+      // },
     },
   },
   plugins: [],
-}
+};
+
+module.exports = config;
