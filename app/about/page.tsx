@@ -10,12 +10,12 @@ export default function About() {
       <span className="overflow-y-scroll md:overflow-y-hidden">
         <PlanetNavContainer planetKey="sand"/>
         <div className="w-full md:w-[calc(100vw-70vh)] block text-center md:text-left">
-          <h1 className="text-7xl font-bold text-white mb-3">hello, traveler!</h1>
-          <p className="text-white text-md md:text-lg">
+          <h1 className="text-7xl font-bold text-white mb-3 slide-up">hello, traveler!</h1>
+          <p className="text-white text-md md:text-lg slide-up">
             I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development. At the moment, I work at Artists for Humanity as a web developer, focusing on crafting practical and user-friendly projects. My creativity extends to designing interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser. Growing in the evolving world of web development is my goal, and so I employ various technologies to enhance my skills, such as:
           </p>
 
-          <div className="pb-2 flex flex-wrap justify-center md:justify-start h-fit space-y-2 space-x-2 bg-[#16181d]/40 rounded my-5 items-center">
+          <div className="pb-2 flex flex-wrap justify-center md:justify-start h-fit space-y-2 space-x-2 bg-[#16181d]/40 rounded my-5 items-center delayed-slide-up">
             <span className="invisible"></span>
             <SkillCard skill="React" icon={<FontAwesomeIcon icon={faReact}/>} link="https://react.dev/"/>
             <SkillCard skill="NodeJS" icon={<FontAwesomeIcon icon={faNodeJs}/>} link="https://nodejs.org/en"/>

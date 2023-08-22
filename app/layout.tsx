@@ -10,6 +10,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { ContactIcon } from '../components/planets';
+import Stars from '@/components/Stars';
 config.autoAddCss = false;
 
 const raleway = Raleway({ subsets: ['latin'] });
@@ -50,12 +51,9 @@ export default function RootLayout({
         {/* <link href="./css/orbit.css" rel="stylesheet"/> */}
       </head>
       <body className={`${raleway.className} h-screen flex flex-col bg-[#22252C] overflow-hidden`}>
-        <div id="star-container" className="opacity-25">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-        </div>
-        {children}
+        <Stars>
+          {children}
+        </Stars>
         <footer className="hidden md:flex absolute bottom-0 right-0 w-full bg-slate-950/20 p-3 text-white justify-between 2xl:min-h-[15vh]">
           <div>
             <p className="text-sm">now playing on my spotify:</p>
@@ -78,7 +76,7 @@ export default function RootLayout({
             <ContactIcon
               platform="Linkedin"
               icon={faLinkedinIn}
-              link="https://www.linkedin.com/in/phaedra-sanon-323062274/"
+              link="https://www.linkedin.com/in/phaedra-sanon/"
               hoverColor="group-hover:text-[#0072b1]"
             />
             <ContactIcon

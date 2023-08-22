@@ -4,6 +4,8 @@ import { Tooltip } from '@material-tailwind/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, faDiagramProject, faGlobe, faHouse, faInfo, faUser, faRocket } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
+// import { ReactNode, useState } from 'react';
+// import { ReactNode, useState } from 'react';
 export type planetTheme = 'flow' | 'sand' | 'wind' | 'grass';
 
 export const planetThemes = ['flow', 'sand', 'wind', 'grass'] as planetTheme[];
@@ -19,9 +21,9 @@ export function PlanetNavContainer({
 }: { planetKey: planetTheme }) {
   return (
     <div>
-      <div id="mobile-planets" className="block md:hidden">
+      {/* <div id="mobile-planets" className="block md:hidden">
         <BasePlanet image={planetKey}/>
-      </div>
+      </div> */}
       <div id="desktop-planets" className="hidden md:block">
         <div id="planet-navs">
           {
@@ -44,7 +46,7 @@ export function KeyPlanet({
   image
 }: { image: planetTheme }) {
   return (
-    <div id="circle-orbit-container">
+    <div id="circle-orbit-container" className="slide-left">
       <Image
         src={`/planets/${image}.svg`}
         width="0"
@@ -77,7 +79,7 @@ export function NavPlanet({
       placement="left"
       className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-48 text-center 2xl:text-2xl"
     >
-      <div className="w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 rounded-full transition hover:scale-125 duration-300 relative overflow-visible">
+      <div className="planet-fade w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 rounded-full transition hover:scale-125 duration-300 relative overflow-visible">
         <a href={`${navigations.get(image)![0]}`}>
           <div className="align-self-start overflow-visible">
             <span className="rounded-full w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 flex justify-center items-center relative top-0 left-0 z-10 group"> {/* border-4 border-sky-500 */}
@@ -162,12 +164,16 @@ export function ContactIcon({
 }
 
 export function BasePlanet({
-  image
+  image,
+  onChange,
+  className,
 }: {
-  image: planetTheme
+  image: planetTheme,
+  onChange: (e: any) => void,
+  className?: string,
 }) {
   return (
-    <div className="text-center flex justify-center items-center h-64 md:mt-10">
+    <div className={`text-center flex justify-center items-center h-64 md:mt-10 ${className}`} onClick={onChange}>
       <span className="rounded-full w-40 h-40 flex justify-center items-center top-0 left-0 z-10 relative"> {/* border-4 border-sky-500 */}
         <span className="w-56 h-56 absolute rounded-full classic-orbit overflow-visible border-4 border-gray-400 opacity-0 opacity-100 transition-opacity duration-200 flex">
           <span className="relative top-[20px] left-[20px] rounded-full bg-gray-300 h-6 w-6 block align-self-end"></span>
