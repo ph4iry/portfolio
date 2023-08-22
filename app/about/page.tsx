@@ -7,7 +7,7 @@ import '@/styles/techicons.css';
 export default function About() {
   return (
     <div className="p-4 pt-10 lg:pl-14 flex flex-col h-screen justify-center md:overflow-hidden overflow-y-scroll">
-      <span className="overflow-y-scroll md:overflow-y-hidden">
+      <div className="overflow-y-visible md:overflow-y-hidden">
         <PlanetNavContainer planetKey="sand"/>
         <div className="w-full md:w-[calc(100vw-70vh)] block text-center md:text-left">
           <h1 className="text-7xl font-bold text-white mb-3 slide-up">hello, traveler!</h1>
@@ -35,7 +35,7 @@ export default function About() {
             <BlastOffTransitionButton nextLocation="/projects" customText="NEXT DESTINATION"/>
           </span>
         </div>
-      </span>
+      </div>
     </div>
   );
 }

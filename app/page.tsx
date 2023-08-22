@@ -6,7 +6,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 const monospaceFont = Fira_Code({ subsets: ['latin'] });
 export default function Home() {
   return (
-    <div className="p-4 lg:pl-10 xl:pl-14 2xl:pl-20 h-screen flex flex-col justify-center md:text-left text-center">
+    <div className="p-4 lg:pl-10 xl:pl-14 2xl:pl-20 md:h-screen flex flex-col justify-start md:justify-center md:text-left text-center">
       <PlanetNavContainer planetKey="flow"/>
       <div className="space-y-3 flex flex-col items-center md:items-start slide-up">
         <span>
