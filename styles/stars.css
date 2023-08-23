@@ -48,8 +48,4 @@
       transform: translateY(0px); }
     to {
       transform: translateY(-2000px); } }
-
-.no-anim {
-  animation: none !important;
-  display: none !important;
-}
+  
