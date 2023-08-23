@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import { Tooltip } from '@material-tailwind/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition, faDiagramProject, faGlobe, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
-// import { ReactNode, useState } from 'react';
+import { IconDefinition, faDiagramProject, faGlobe, faHouse, faInfo, faUser, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/navigation';
 export type planetTheme = 'flow' | 'sand' | 'wind' | 'grass';
 
 export const planetThemes = ['flow', 'sand', 'wind', 'grass'] as planetTheme[];
@@ -18,7 +18,10 @@ export function PlanetNavContainer({
   planetKey,
 }: { planetKey: planetTheme }) {
   return (
-    <div className="z-10">
+    <div>
+      <div id="mobile-planets" className="block md:hidden">
+        <BasePlanet image={planetKey}/>
+      </div>
       <div id="desktop-planets" className="hidden md:block">
         <div id="planet-navs">
           {
@@ -41,7 +44,7 @@ export function KeyPlanet({
   image
 }: { image: planetTheme }) {
   return (
-    <div id="circle-orbit-container" className="slide-left">
+    <div id="circle-orbit-container">
       <Image
         src={`/planets/${image}.svg`}
         width="0"
@@ -74,7 +77,7 @@ export function NavPlanet({
       placement="left"
       className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-48 text-center 2xl:text-2xl"
     >
-      <div className="planet-fade w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 rounded-full transition hover:scale-125 duration-300 relative overflow-visible">
+      <div className="w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 rounded-full transition hover:scale-125 duration-300 relative overflow-visible">
         <a href={`${navigations.get(image)![0]}`}>
           <div className="align-self-start overflow-visible">
             <span className="rounded-full w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 flex justify-center items-center relative top-0 left-0 z-10 group"> {/* border-4 border-sky-500 */}
@@ -96,37 +99,37 @@ export function NavPlanet({
     </Tooltip>
   );
 }
-// export function BlastOffTransitionButton({
-//   nextLocation,
-//   customText,
-// }: {
-//   nextLocation: string,
-//   customText?: string,
-// }) {
-//   const router = useRouter();
+export function BlastOffTransitionButton({
+  nextLocation,
+  customText,
+}: {
+  nextLocation: string,
+  customText?: string,
+}) {
+  const router = useRouter();
 
-//   return (
-//     <span className="flex items-center space-x-4">
-//       <button className="text-xl lg:text-xl 2xl:text-2xl px-3 2xl:px-6 py-1 2xl:py-2 rounded-full font-semibold bg-blue-400 text-white my-2 2xl:my-3 group hover:drop-shadow-[0_0_20px_rgba(96,165,250,0.25)] disabled:animate-pulse disabled:opacity-75" onClick={(e) => {
-//         const btn = (e.target as HTMLButtonElement);
-//         btn.setAttribute('disabled', 'true');
-//         btn.innerText = 'PLEASE WAIT...';
-//         router.push(nextLocation);
-//       }}>
-//         {customText || 'BLAST OFF!'} <FontAwesomeIcon icon={faRocket} className="transition-all group-hover:ml-2 duration-400 ease-out group-hover:drop-shadow"/>
-//       </button>
+  return (
+    <span className="flex items-center space-x-4">
+      <button className="text-xl lg:text-xl 2xl:text-2xl px-3 2xl:px-6 py-1 2xl:py-2 rounded-full font-semibold bg-blue-400 text-white my-2 2xl:my-3 group hover:drop-shadow-[0_0_20px_rgba(96,165,250,0.25)] disabled:animate-pulse disabled:opacity-75" onClick={(e) => {
+        const btn = (e.target as HTMLButtonElement);
+        btn.setAttribute('disabled', 'true');
+        btn.innerText = 'PLEASE WAIT...';
+        router.push(nextLocation);
+      }}>
+        {customText || 'BLAST OFF!'} <FontAwesomeIcon icon={faRocket} className="transition-all group-hover:ml-2 duration-400 ease-out group-hover:drop-shadow"/>
+      </button>
 
-//       <Tooltip
-//         content="hint: interact with the planets or the rocket ship to explore the site!"
-//         className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-96 text-center 2xl:text-lg"
-//       >
-//         <span className="hidden md:flex justify-center items-center p-2 rounded-full lg:border-[3px] 2xl:border-4 group hover:border-gray-500 border-gray-700 w-12 lg:w-8 h-12 lg:h-8">
-//           <FontAwesomeIcon icon={faInfo} className="group-hover:text-gray-500 text-gray-700 w-7 lg:w-4 h-7 lg:h-4" />
-//         </span>
-//       </Tooltip>
-//     </span>
-//   );
-// }
+      <Tooltip
+        content="hint: interact with the planets or the rocket ship to explore the site!"
+        className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-96 text-center 2xl:text-lg"
+      >
+        <span className="hidden md:flex justify-center items-center p-2 rounded-full lg:border-[3px] 2xl:border-4 group hover:border-gray-500 border-gray-700 w-12 lg:w-8 h-12 lg:h-8">
+          <FontAwesomeIcon icon={faInfo} className="group-hover:text-gray-500 text-gray-700 w-7 lg:w-4 h-7 lg:h-4" />
+        </span>
+      </Tooltip>
+    </span>
+  );
+}
 
 export function ContactIcon({
   platform,
@@ -140,7 +143,7 @@ export function ContactIcon({
   hoverColor: string,
 }) {
   return (
-    <a href={link} className="text-white text-zinc-500 md:p-3 md:rounded-full text-xl hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.5)] cursor-pointer" aria-label={`link to my ${platform}`}>
+    <a href={link} className="group text-white text-zinc-500 md:p-3 md:rounded-full text-xl hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
       <span className="hidden md:block">{platform.toLowerCase()}</span>
       <span className="md:hidden"><FontAwesomeIcon icon={icon} className={`${hoverColor}`}/></span>
     </a>
@@ -159,16 +162,12 @@ export function ContactIcon({
 }
 
 export function BasePlanet({
-  image,
-  onChange,
-  className,
+  image
 }: {
-  image: planetTheme,
-  onChange: (e: any) => void,
-  className?: string,
+  image: planetTheme
 }) {
   return (
-    <div className={`text-center flex justify-center items-center h-64 md:mt-10 ${className}`} onClick={onChange}>
+    <div className="text-center flex justify-center items-center h-64 md:mt-10">
       <span className="rounded-full w-40 h-40 flex justify-center items-center top-0 left-0 z-10 relative"> {/* border-4 border-sky-500 */}
         <span className="w-56 h-56 absolute rounded-full classic-orbit overflow-visible border-4 border-gray-400 opacity-0 opacity-100 transition-opacity duration-200 flex">
           <span className="relative top-[20px] left-[20px] rounded-full bg-gray-300 h-6 w-6 block align-self-end"></span>

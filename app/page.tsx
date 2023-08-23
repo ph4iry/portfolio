@@ -1,14 +1,14 @@
 import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { ContactIcon, PlanetNavContainer } from '../components/planets';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { BlastOffTransitionButton, ContactIcon, PlanetNavContainer } from '../components/planets';
 import { Fira_Code } from 'next/font/google';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const monospaceFont = Fira_Code({ subsets: ['latin'] });
 export default function Home() {
   return (
-    <div className="p-4 lg:pl-10 xl:pl-14 2xl:pl-20 md:h-screen flex flex-col justify-start md:justify-center md:text-left text-center">
+    <div className="p-4 lg:pl-10 xl:pl-14 2xl:pl-20 h-screen flex flex-col justify-center md:text-left text-center">
       <PlanetNavContainer planetKey="flow"/>
-      <div className="space-y-3 flex flex-col items-center md:items-start slide-up">
+      <div className="space-y-3 flex flex-col items-center md:items-start">
         <span>
           <p className={`text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl text-zinc-400 ${monospaceFont.className}`}>HI, I&apos;M</p>
           <p className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white hover:drop-shadow-[0_0_35px_rgba(255,255,255,0.25)] transition-shadows duration-300">Phaedra Sanon</p>
@@ -41,6 +41,8 @@ export default function Home() {
               hoverColor=""
             />
         </div>
+
+        <BlastOffTransitionButton nextLocation="/about"/>
       </div>
     </div>
   );
