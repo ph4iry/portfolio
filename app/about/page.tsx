@@ -1,5 +1,5 @@
 import { SkillCard } from '../../components/skills';
-import { BlastOffTransitionButton, PlanetNavContainer } from '../../components/planets';
+import { PlanetNavContainer } from '../../components/planets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBootstrap, faCss3, faFigma, faGithub, faHtml5, faJs, faNodeJs, faPython, faReact, faSass } from '@fortawesome/free-brands-svg-icons';
 import '@/styles/techicons.css';
@@ -30,10 +30,6 @@ export default function About() {
             <SkillCard skill="Typescript" icon={<i className="tech-typescript"></i>} link="https://www.typescriptlang.org/"/>
             <SkillCard skill="Next.js" icon={<i className="tech-nextjs"></i>} link="https://nextjs.org/"/>
           </div>
-
-          <span className="flex justify-center md:justify-start w-full">
-            <BlastOffTransitionButton nextLocation="/projects" customText="NEXT DESTINATION"/>
-          </span>
         </div>
       </div>
     </div>

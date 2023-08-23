@@ -9,7 +9,7 @@ export function ProjectCard({ name, description, photo, link }: {
   link: string,
 }) {
   return (
-    <div className="transition-all rounded-md bg-zinc-600/30 w-full space-y-2 hover:scale-[1.0425]">
+    <div className="transition-all rounded-md bg-zinc-600/30 w-full space-y-2 hover:scale-[1.0425] hover:shadow-md group">
       <div className="w-full relative">
         <Image
           src={photo}
@@ -22,8 +22,8 @@ export function ProjectCard({ name, description, photo, link }: {
         />
       </div>
       <div className="text-left px-4 pb-4">
-        <div className="text-white font-bold text-2xl">{name}
-          <a href={link} className="ml-3 transition-all hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
+        <div className="text-white font-bold text-2xl group-hover:text-indigo-400">{name}
+          <a href={link} className="ml-3 transition-all group-hover:text-white hover:drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
             <span className="sr-only">view on external website</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </a>

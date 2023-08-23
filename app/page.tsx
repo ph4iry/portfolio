@@ -1,7 +1,7 @@
 import { faGithub, faLinkedinIn, faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { BlastOffTransitionButton, ContactIcon, PlanetNavContainer } from '../components/planets';
-import { Fira_Code } from 'next/font/google';
+import { ContactIcon, PlanetNavContainer } from '../components/planets';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { Fira_Code } from 'next/font/google';
 
 const monospaceFont = Fira_Code({ subsets: ['latin'] });
 export default function Home() {
@@ -41,8 +41,6 @@ export default function Home() {
               hoverColor=""
             />
         </div>
-
-        <BlastOffTransitionButton nextLocation="/about"/>
       </div>
     </div>
   );

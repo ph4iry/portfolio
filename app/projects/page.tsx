@@ -21,13 +21,13 @@ export default function Projects() {
             name="bps-aspen"
             description="A web scraper API for Boston Public School's Student Information System (Aspen SIS)"
             photo={BPSAspenLib}
-            link=""
+            link="https://github.com/ph4iry/aspen"
           />
           <ProjectCard
             name="myBLA"
             description="A web app for Boston Latin Academy students to manage their academics, schedules, and activities"
             photo={myBLAApp}
-            link=""
+            link="https://github.com/ph4iry/mybla"
           />
           <ProjectCard
             name="OdistAI"
