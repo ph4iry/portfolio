@@ -20,7 +20,7 @@ export function PlanetNavContainer({
   planetKey,
 }: { planetKey: planetTheme }) {
   return (
-    <div>
+    <div className="z-10">
       {/* <div id="mobile-planets" className="block md:hidden">
         <BasePlanet image={planetKey}/>
       </div> */}
@@ -76,8 +76,8 @@ export function NavPlanet({
       content={
         <>{navigations.get(image)![1]} <FontAwesomeIcon icon={correspondingTooltipIcon} /></>
       }
-      placement="left"
-      className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-48 text-center 2xl:text-2xl"
+      placement="top"
+      className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-48 text-center 2xl:text-2xl z-20"
     >
       <div className="planet-fade w-20 h-20 lg:w-20 lg:h-20 xl:w-28 xl:h-28 2xl:w-36 2xl:h-36 rounded-full transition hover:scale-125 duration-300 relative overflow-visible">
         <a href={`${navigations.get(image)![0]}`}>
@@ -123,7 +123,7 @@ export function BlastOffTransitionButton({
 
       <Tooltip
         content="hint: interact with the planets or the rocket ship to explore the site!"
-        className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-96 text-center 2xl:text-lg"
+        className="bg-[#16181d] rounded shadow-xl shadow-black/10 px-4 py-3 w-96 text-center 2xl:text-lg z-20"
       >
         <span className="hidden md:flex justify-center items-center p-2 rounded-full lg:border-[3px] 2xl:border-4 group hover:border-gray-500 border-gray-700 w-12 lg:w-8 h-12 lg:h-8">
           <FontAwesomeIcon icon={faInfo} className="group-hover:text-gray-500 text-gray-700 w-7 lg:w-4 h-7 lg:h-4" />

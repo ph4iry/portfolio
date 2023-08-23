@@ -6,7 +6,7 @@ import '@/styles/techicons.css';
 
 export default function About() {
   return (
-    <div className="p-4 pt-10 lg:pl-14 flex flex-col h-screen justify-center md:overflow-hidden overflow-y-scroll">
+    <div className="p-4 pt-10 lg:pl-14 flex flex-col md:h-screen justify-start md:justify-center md:overflow-hidden">
       <div className="overflow-y-visible md:overflow-y-hidden">
         <PlanetNavContainer planetKey="sand"/>
         <div className="w-full md:w-[calc(100vw-70vh)] block text-center md:text-left">

@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-
-import { Fragment, ReactNode, useState } from 'react';
+import { Fragment, ReactNode, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BasePlanet } from './planets';
 import '@/styles/galaxy.css';
@@ -46,7 +45,7 @@ export default function Stars({ children }: { children: ReactNode }) {
           <div id="stars2"></div>
           <div id="stars3"></div>
         </div>
-        <div className="z-10 overflow-y-auto flex flex-col justify-center h-full">
+        <div className="z-10 overflow-y-auto flex flex-col justify-start h-full pt-16 pb-20">
           <BasePlanet image={Planets.get(pathname)} onChange={handleChange} className="block md:hidden"/>
           {children}
         </div>
@@ -56,7 +55,7 @@ export default function Stars({ children }: { children: ReactNode }) {
     return (
       <Galaxy
         activeStarManagement={[activeStars, setActiveStars]}
-        keyPlanet={<BasePlanet image={Planets.get(pathname)} onChange={handleChange} className="z-50 block md:hidden"/>}
+        // keyPlanet={<BasePlanet image={Planets.get(pathname)} onChange={handleChange} className="z-50 block md:hidden"/>}
       >
         <div className="z-10 overflow-y-hidden">
           {children}
@@ -66,14 +65,16 @@ export default function Stars({ children }: { children: ReactNode }) {
   }
 }
 
-export function Galaxy({ children, keyPlanet, activeStarManagement }: { children: ReactNode, keyPlanet: ReactNode, activeStarManagement: [starType, (e: starType) => void] }) {
+export function Galaxy({ children, activeStarManagement }: { children: ReactNode, activeStarManagement: [starType, (e: starType) => void] }) {
   const pathname = usePathname();
   const paths = ['/', '/about', '/projects', '/contact'];
   const [nextNavigation, setNextNavigation] = useState(paths.indexOf(pathname));
+  const [activelyNavigating, setActivelyNavigating] = useState(false);
   const router = useRouter();
+
   const handleNavigation = (path: string) => {
-    activeStarManagement[1]('sky');
     router.push(path);
+    setActivelyNavigating(true);
   };
 
   const translations = [
@@ -108,11 +109,17 @@ export function Galaxy({ children, keyPlanet, activeStarManagement }: { children
   };
 
   console.log(translations[nextNavigation]);
+
+  useEffect(() => {
+    if (activelyNavigating) {
+      activeStarManagement[1]('sky');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
   return (
     <>
       {/* {keyPlanet} */}
       {children}
-
       <div className="h-screen w-screen z-50 bg-[#22252c] absolute top-0 left-0 flex flex-col justify-center items-center block md:hidden">
         <div className="z-0">
           <div className="stars"></div>

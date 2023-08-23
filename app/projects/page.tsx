@@ -4,12 +4,12 @@ import BPSAspenLib from '@/public/img/projects/aspen.png';
 import myBLAApp from '@/public/img/projects/myBLA.png';
 import OdistAI from '@/public/img/projects/odistai.png';
 
-export default function Project() {
+export default function Projects() {
   return (
-    <div className="p-4 md:pl-10 flex flex-col justify-content-center text-white text-center md:text-left overflow-y-auto">
+    <div className="p-4 pt-10 md:pt-4 lg:pl-14 flex flex-col md:h-screen justify-start md:overflow-hidden text-white text-center md:text-left">
       <PlanetNavContainer planetKey="wind"/>
-      <h1 className="font-bold text-7xl slide-up mb-8">my projects</h1>
-      <div className="block md:p-8 no-scrollbar overflow-x-visible overflow-y-visible md:overflow-y-auto min-h-screen md:min-h-auto md:h-[calc(100vh-25vh-4.5rem)] md:w-[calc(100vw-70vh)] md:border md:border-zinc-300/20 rounded">
+      <h1 className="font-bold text-7xl slide-up mb-8 text-center md:text-left">my projects</h1>
+      <div className="block md:p-8 no-scrollbar overflow-x-visible overflow-y-visible md:overflow-y-auto md:min-h-auto md:max-h-[calc(100vh-35vh-4.5rem)] md:w-[calc(100vw-70vh)] md:border md:border-zinc-300/20 rounded">
         <div className="delayed slide-up block md:grid md:grid-cols-2 2xl:grid-cols-3 space-y-8 md:space-y-0 md:gap-8">
           <ProjectCard
             name="ARTOPIA Donation Interactive"
