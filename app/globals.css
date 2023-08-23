@@ -76,7 +76,6 @@
 .planet-fade {
   animation: 1.75s ease-in-out 0s 1 planet-fade-in;
 }
-
 @keyframes spin {
   from {
     transform:rotate(calc(45deg * var(--nth-child)));

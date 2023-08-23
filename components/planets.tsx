@@ -4,7 +4,6 @@ import { Tooltip } from '@material-tailwind/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, faDiagramProject, faGlobe, faHouse, faUser } from '@fortawesome/free-solid-svg-icons';
 // import { ReactNode, useState } from 'react';
-// import { ReactNode, useState } from 'react';
 export type planetTheme = 'flow' | 'sand' | 'wind' | 'grass';
 
 export const planetThemes = ['flow', 'sand', 'wind', 'grass'] as planetTheme[];
@@ -20,9 +19,6 @@ export function PlanetNavContainer({
 }: { planetKey: planetTheme }) {
   return (
     <div className="z-10">
-      {/* <div id="mobile-planets" className="block md:hidden">
-        <BasePlanet image={planetKey}/>
-      </div> */}
       <div id="desktop-planets" className="hidden md:block">
         <div id="planet-navs">
           {

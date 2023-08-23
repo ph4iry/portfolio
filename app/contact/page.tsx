@@ -6,31 +6,6 @@ import { IconDefinition, faGithub, faLinkedin, faSpotify } from '@fortawesome/fr
 
 const monospaceFont = Fira_Code({ subsets: ['latin'] });
 
-// <ContactIcon
-// platform="Spotify"
-// icon={faSpotify}
-// link="https://open.spotify.com/user/p44gq4wrzz0qlhy8prpq99n3a?si=e54aee13739c4016"
-// hoverColor="group-hover:text-[#1db954]"
-// />
-// <ContactIcon
-// platform="Linkedin"
-// icon={faLinkedinIn}
-// link="https://www.linkedin.com/in/phaedra-sanon/"
-// hoverColor="group-hover:text-[#0072b1]"
-// />
-// <ContactIcon
-// platform="Github"
-// icon={faGithub}
-// link="https://github.com/ph4iry"
-// hoverColor="group-hover:text-[#000000]"
-// />
-// <ContactIcon
-// platform="Email"
-// icon={faEnvelope}
-// link="mailto:phaedrasanon@gmail.com"
-// hoverColor="group-hover:text-[#BB001B]"
-// />
-
 const socials: [string, IconDefinition, string][] = [
   ['Github', faGithub, 'https://github.com/ph4iry'],
   ['Linkedin', faLinkedin, 'https://www.linkedin.com/in/phaedra-sanon/'],
@@ -64,6 +39,15 @@ export default function Contact() {
         </div>
       </div>
 
+export default function Contact() {
+  return (
+    <div className="p-4 pl-10 h-full flex flex-col justify-content-center">
+      <div>
+        <p className="text-5xl font-bold text-white">hi,</p>
+        <p className="text-7xl font-bold text-white">im phaedra.</p>
+      </div>
+      {/* planet collection */}
+      <PlanetNavContainer planetKey="grass"/>
     </div>
   );
 }
