@@ -11,12 +11,17 @@
   "dependencies": {
     "@react-three/drei": "^9.94.1",
     "@react-three/fiber": "^8.15.14",
+    "@splinetool/r3f-spline": "^1.0.2",
+    "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.0.30",
     "@types/three": "^0.160.0",
+    "i": "^0.3.7",
     "next": "14.0.4",
+    "npm": "^10.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "three": "^0.160.0"
+    "three": "^0.160.0",
+    "three-stdlib": "^2.29.4"
   },
   "devDependencies": {
     "@types/node": "^20",
