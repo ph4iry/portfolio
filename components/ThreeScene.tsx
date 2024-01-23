@@ -11,7 +11,7 @@ export default function Scene({ ...props }) {
   const { nodes, materials } = useSpline('https://prod.spline.design/jXtRHgXJVqQlEvtQ/scene.splinecode')
   return (
     <>
-      <color attach="background" args={['#210c31']} />
+      <color attach="background" args={['#1e1b4b']} />
       <group {...props} dispose={null}>
         <scene name="Scene">
           {/* <group name="shooting-stars" position={[-4275.74, 1653.19, 2437.42]}>
@@ -70,60 +70,66 @@ export default function Scene({ ...props }) {
             position={[-591.6, 598.19, -2734.43]}
             rotation={[-2.93, -0.21, -3.1]}
           />
-          <group name="red projects" position={[-1768.92, 0, 1560.14]}>
-            <group name="Group" position={[0, -13.47, 0]}>
-              <mesh
-                name="Star"
-                geometry={nodes.Star.geometry}
-                material={materials['Star Material']}
-                castShadow
-                receiveShadow
-                position={[378.25, -14.06, -35.42]}
-                rotation={[-1.29, 1.25, 0.12]}
-                scale={1}
-              />
-              <mesh
-                name="Torus"
-                geometry={nodes.Torus.geometry}
-                material={materials['Torus Material']}
-                castShadow
-                receiveShadow
-                position={[0, 13.47, 0]}
-                rotation={[-Math.PI / 2, 0.08, -1.26]}
-                scale={1}
-              />
-            </group>
-            <mesh
-              name="Sphere"
-              geometry={nodes.Sphere.geometry}
-              material={materials['Sphere Material']}
-              castShadow
-              receiveShadow
-              scale={1}
-            />
-          </group>
-          <Rotator>
-            <group name="purple about">
-              <mesh
-                name="Torus1"
-                geometry={nodes.Torus1.geometry}
-                material={materials['Torus1 Material']}
-                castShadow
-                receiveShadow
-                rotation={[-Math.PI / 2, 0.08, -1.26]}
-                scale={1}
-              />
-              <mesh
-                name="Sphere1"
-                geometry={nodes.Sphere1.geometry}
-                material={materials['Sphere1 Material']}
-                castShadow
-                receiveShadow
-                rotation={[Math.PI, -1.1, Math.PI]}
-                scale={1}
-              />
-            </group>
-          </Rotator>
+          <Hoverable>
+            <Rotator>
+              <group name="red projects" position={[-1768.92, 0, 1560.14]}>
+                <group name="Group" position={[0, -13.47, 0]}>
+                  <mesh
+                    name="Star"
+                    geometry={nodes.Star.geometry}
+                    material={materials['Star Material']}
+                    castShadow
+                    receiveShadow
+                    position={[378.25, -14.06, -35.42]}
+                    rotation={[-1.29, 1.25, 0.12]}
+                    scale={1}
+                  />
+                  <mesh
+                    name="Torus"
+                    geometry={nodes.Torus.geometry}
+                    material={materials['Torus Material']}
+                    castShadow
+                    receiveShadow
+                    position={[0, 13.47, 0]}
+                    rotation={[-Math.PI / 2, 0.08, -1.26]}
+                    scale={1}
+                  />
+                </group>
+                <mesh
+                  name="Sphere"
+                  geometry={nodes.Sphere.geometry}
+                  material={materials['Sphere Material']}
+                  castShadow
+                  receiveShadow
+                  scale={1}
+                />
+              </group>
+            </Rotator>
+          </Hoverable>
+          <Hoverable>
+            <Rotator>
+              <group name="purple about">
+                <mesh
+                  name="Torus1"
+                  geometry={nodes.Torus1.geometry}
+                  material={materials['Torus1 Material']}
+                  castShadow
+                  receiveShadow
+                  rotation={[-Math.PI / 2, 0.08, -1.26]}
+                  scale={1}
+                />
+                <mesh
+                  name="Sphere1"
+                  geometry={nodes.Sphere1.geometry}
+                  material={materials['Sphere1 Material']}
+                  castShadow
+                  receiveShadow
+                  rotation={[Math.PI, -1.1, Math.PI]}
+                  scale={1}
+                />
+              </group>
+            </Rotator>
+          </Hoverable>
           <directionalLight
             name="Directional Light"
             castShadow

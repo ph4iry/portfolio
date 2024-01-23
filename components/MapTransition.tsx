@@ -38,7 +38,6 @@ export default function MapTransition() {
         <Suspense fallback={null}>
           <Canvas shadows flat linear>
             <ThreeScene />
-            <OrbitControls />
           </Canvas>
         </Suspense>
       </div>
