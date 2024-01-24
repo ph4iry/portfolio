@@ -2,13 +2,35 @@
 import useSpline from "@splinetool/r3f-spline";
 import { Clone, Float, Html, OrthographicCamera, PerspectiveCamera } from "@react-three/drei";
 import { Hoverable } from "./Hoverable";
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { useSpring, config, animated } from "@react-spring/three";
-import { useThree } from "@react-three/fiber";
+import { ThreeElements, useFrame, useThree } from "@react-three/fiber";
 import Rotator from "./Rotator";
+import useKeyboard from "@/hooks/useKeyboard";
+import BoxThing from "./Translator";
+
+function Box(props: ThreeElements['mesh']) {
+  const meshRef = useRef<THREE.Mesh>(null!)
+  const [hovered, setHover] = useState(false)
+  const [active, setActive] = useState(false)
+  useFrame((state, delta) => (meshRef.current.rotation.x += delta))
+  return (
+    <mesh
+      {...props}
+      ref={meshRef}
+      scale={active ? 1.5 : 1}
+      onClick={(event) => setActive(!active)}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+    </mesh>
+  )
+}
 
 export default function Scene({ ...props }) {
-  const { nodes, materials } = useSpline('https://prod.spline.design/jXtRHgXJVqQlEvtQ/scene.splinecode')
+  const { nodes, materials } = useSpline('https://prod.spline.design/jXtRHgXJVqQlEvtQ/scene.splinecode');
+
   return (
     <>
       <color attach="background" args={['#1e1b4b']} />
@@ -72,7 +94,7 @@ export default function Scene({ ...props }) {
           />
           <Hoverable>
             <Rotator>
-              <group name="red projects" position={[-1768.92, 0, 1560.14]}>
+              <group name="red projects" position={[-1500, 0, 1500]} matrix={} >
                 <group name="Group" position={[0, -13.47, 0]}>
                   <mesh
                     name="Star"
