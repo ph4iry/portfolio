@@ -35,17 +35,6 @@ up={[0, 1, 0]}
 position={[-591.6, 598.19, -2734.43]}
 rotation={[-2.93, -0.21, -3.1]}
 /> */}
-
-const About = {
-  position:[-591.6, 598.19, -2734.43],
-  rotation:[-2.93, -0.21, -3.1],
-}
-
-const Projects = {
-  position:[-2728.54, 242.11, -568.21],
-  rotation:[-2.99, -0.43, -3.12],
-}
-
 export default function Scene({ navigate, ...props }: { navigate: [number, Dispatch<SetStateAction<number>>], props?: SceneProps}) {
   const { nodes, materials } = useSpline('https://prod.spline.design/jXtRHgXJVqQlEvtQ/scene.splinecode');
 
@@ -114,6 +103,28 @@ export default function Scene({ navigate, ...props }: { navigate: [number, Dispa
                     </group>
                   </Rotator>
                 </group>
+              </>
+              <>
+              <group name="green now playing" position={[-3000, 0, 3000]}>
+                <mesh
+                  name="Helix"
+                  geometry={nodes.Helix.geometry}
+                  material={materials['Helix Material']}
+                  castShadow
+                  receiveShadow
+                  position={[0, 0, 0]}
+                  rotation={[-Math.PI, -0.36, -Math.PI]}
+                  scale={1}
+                />
+                <mesh
+                  name="Sphere"
+                  geometry={nodes.Sphere.geometry}
+                  material={materials['Sphere Material']}
+                  castShadow
+                  receiveShadow
+                  scale={1}
+                />
+              </group>
               </>
               <Rotator>
                 <group name="purple about">
