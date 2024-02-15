@@ -7,12 +7,6 @@ import useKeyboard from '@/hooks/useKeyboard';
 
 export default function Rotator({ children }:{children: ReactNode}) {
   const orbitor = useRef<Group>(null!);
-  const keyMap = useKeyboard();
-
-  useFrame((_, delta) => {
-    keyMap['KeyA'] && (orbitor.current.position.x -= 1500 * delta)
-    keyMap['KeyD'] && (orbitor.current.position.x += 1500 * delta)
-  })
 
   const props = useSpring({
     from: {
@@ -23,10 +17,8 @@ export default function Rotator({ children }:{children: ReactNode}) {
     },
   })
 
-  console.log(props);
-  // Hook to update the rotation on each frame
   useFrame(({ clock }) => {
-    orbitor.current.rotation.y = clock.getElapsedTime()
+    orbitor.current.rotation.y = clock.getElapsedTime();
   })
 
   return (
