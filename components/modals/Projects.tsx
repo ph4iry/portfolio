@@ -3,12 +3,12 @@ import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import AboutMeScene from "../scenes/AboutMeScene";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 
-type AboutMeProps = {
+type ProjectsProps = {
   open: boolean;
   setOpen: (b: boolean) => void;
 };
 
-export default function AboutMe({ open, setOpen }: AboutMeProps) {
+export default function Projects({ open, setOpen }: ProjectsProps) {
 
   return (
     <Transition show={open}
@@ -43,7 +43,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-50"
             >
-              <Dialog.Panel className="w-full max-w-[80vw] min-h-[70vh] max-h-[90vh] transform overflow-hidden rounded-2xl bg-[#210547]/60 backdrop-blur-md shadow-xl transition-all flex flex-col-reverse md:flex-row">
+              <Dialog.Panel className="w-full max-w-5xl min-h-[70vh] max-h-[90vh] transform overflow-hidden rounded-2xl bg-[#210547]/60 backdrop-blur-md shadow-xl transition-all flex flex-col-reverse md:flex-row">
                 <div className="md:w-1/2 bg-black/30 text-slate-300 text-left py-4 px-7">
                   <Transition.Child
                     as={Fragment}
@@ -67,7 +67,10 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     enterTo="opacity-100 translate-y-0"
                   >
                     <p className="overflow-auto">
-                    I'm Phaedra Sanon, a high school junior with a profound passion for web development. At the moment, I work at Artists for Humanity as a web developer, focusing on crafting practical and user-friendly projects. My creativity extends to designing interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser and the mobile implementation of our 2022 Annual Report. Growing in the evolving world of web development is my goal, and so I employ various technologies to enhance my skills, such as:
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vivamus arcu felis bibendum ut tristique et egestas quis. Et tortor consequat id porta nibh. Aliquam id diam maecenas ultricies mi eget mauris. Diam quam nulla porttitor massa id neque. Ullamcorper a lacus vestibulum sed arcu. Tempor orci eu lobortis elementum nibh tellus molestie. Egestas erat imperdiet sed euismod.
+                      <br/>
+                      <br/>
+                      Cras ornare arcu dui vivamus arcu felis bibendum. Sodales ut etiam sit amet nisl purus in. Ac auctor augue mauris augue neque gravida in fermentum et. Duis at tellus at urna condimentum mattis pellentesque id. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Consequat id porta nibh venenatis. Pulvinar mattis nunc sed blandit libero volutpat sed cras. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Suspendisse faucibus interdum posuere lorem ipsum dolor sit.
                     </p>
                   </Transition.Child>
                 </div>
