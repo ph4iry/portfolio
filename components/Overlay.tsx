@@ -2,22 +2,33 @@
 import { Transition } from "@headlessui/react";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
-import { Dispatch, SetStateAction, useReducer, useState } from "react";
+import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect, useReducer, useState } from "react";
+import AboutMe from "./modals/AboutMe";
+import { useRouter } from "next/navigation";
 
-const pages: [string, string][] = [
-  ['About', '/about'],
-  ['Projects', '/projects'],
-  ['Now Playing', '/now-playing']
+const pages: [string, string, `bg-${string}-${number}`, ((props: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>}) => JSX.Element)][] = [
+  ['About', '/about', 'bg-indigo-800', AboutMe],
+  ['Projects', '/projects', 'bg-violet-400', AboutMe],
+  ['Contact', '/contact', 'bg-violet-400', AboutMe]
 ]
 
-export function Overlay({ navigator, slider }: {navigator:[number, Dispatch<SetStateAction<number>>], slider: [boolean, Dispatch<SetStateAction<boolean>>]}) {
-  const [show, setShow] = useState(true);
+export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispatch<SetStateAction<number>>], slider: [boolean, Dispatch<SetStateAction<boolean>>], dialog: [boolean, Dispatch<SetStateAction<boolean>>] }) {
+  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [currentPage, setCurrentPage] = navigator;
   const [slideOff, setSlideOff] = slider;
-  
+  const [inDialog, setInDialog] = dialog;
+
+  useEffect(() => {
+    setInDialog(showModal);
+    console.log(showModal, inDialog);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showModal]);
+
   return (
     <>
+    <AboutMe open={currentPage === 0 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
     <div className="absolute top-0 h-20 w-screen text-white p-10">
       <div className="flex gap-8">
         <Transition
@@ -37,31 +48,31 @@ export function Overlay({ navigator, slider }: {navigator:[number, Dispatch<SetS
       <div className="absolute bottom-0 w-screen h-[30vh]">
         {
           pages.map((page, i) => (
-            <Transition
-              key={i}
-              show={currentPage == i}
-              className={"flex flex-col items-center text-center h-1 overflow-visible"}
-              enter="transition-all duration-[1500ms] delay-[700ms]"
-              enterFrom="opacity-0 translate-y-5"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition-all duration-750"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <h1 className="font-bold text-3xl text-white">{page[0]}</h1>
+            <Fragment key={i}>
               <Transition
-                show={true}
-                enter="transition-transform duration-400 delay-400"
-                enterFrom="translate-y-6"
-                enterTo="translate-y-0"
+                show={currentPage == i}
+                className={"flex flex-col items-center text-center h-1 overflow-visible"}
+                enter="transition-all duration-[1500ms] delay-[700ms]"
+                enterFrom="opacity-0 translate-y-5"
+                enterTo="opacity-100 translate-y-0"
+                leave="transition-all duration-750"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
               >
-                <a className="block font-bold underline text-xl text-fuchsia-500" href={page[1]}>VISIT</a>
+                <h1 className="font-bold text-3xl text-white">{page[0]}</h1>
+                <Transition.Child
+                  enter="transition-transform duration-400 delay-400"
+                  enterFrom="translate-y-6"
+                  enterTo="translate-y-0"
+                >
+                  <button className="block font-bold underline text-xl text-fuchsia-500" onClick={() => { setInDialog(true);setShowModal(true) }}>VISIT</button>
+                </Transition.Child>
               </Transition>
-            </Transition>
+            </Fragment>
           ))
         }
       </div>
-      {/* <Transition
+      <Transition
         show={slideOff}
         enter="transition-all duration-[1500ms] delay-[700ms]"
         enterFrom="opacity-0 translate-y-5"
@@ -69,25 +80,42 @@ export function Overlay({ navigator, slider }: {navigator:[number, Dispatch<SetS
         leave="transition-all duration-750"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="absolute bottom-[15%] text-white/50 text-sm md:text-base xl:text-lg w-screen flex justify-center"
+        className="absolute bottom-[10%] text-white/50 text-base md:text-base xl:text-lg w-screen flex justify-center"
       >
-        <div className="hidden md:block">Press 
-        
-        <kbd className="inline-flex items-center px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
-          <ArrowLeftCircleIcon className="h-6" />
-          <span className="sr-only">Arrow key up</span>
-        </kbd>
+        <div className="hidden md:flex gap-2 items-center">Press 
+          <kbd className="inline-flex">
+            <ArrowLeftCircleIcon className="h-6" />
+            <span className="sr-only">left arrow key</span>
+          </kbd>
 
-        or
+          or
 
-        <kbd className="inline-flex items-center px-2 py-1.5 text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">
-          <ArrowRightCircleIcon className="h-6"/>
-          <span className="sr-only">right arrow key</span>
-        </kbd>
+          <kbd className="inline-flex">
+            <ArrowRightCircleIcon className="h-6"/>
+            <span className="sr-only">right arrow key</span>
+          </kbd>
+
+          to navigate
         </div>
-        <div className="md:hidden block">swipe left and right to navigate the phaedraverse</div>
-      </Transition> */}
+        <div className="md:hidden block w-[70vw] whitespace-wrap text-center">Swipe left and right to navigate</div>
+      </Transition>
     </>
 
   );
+}
+
+function CustomModal({ node, show }:{ node: ReactNode, show: boolean}) {
+  <Transition
+    show={show}
+    enter="transition duration-100 ease-out"
+    enterFrom="scale-95 opacity-0"
+    enterTo="scale-100 opacity-100"
+    leave="transition duration-75 ease-out"
+    leaveFrom="scale-100 opacity-100"
+    leaveTo="scale-95 opacity-0"
+    as={'div'}
+  >
+    node
+    {node}
+  </Transition>
 }

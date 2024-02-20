@@ -5,7 +5,7 @@ import { useSpring, animated, SpringValues, SpringValue } from '@react-spring/th
 import { Euler, Group } from 'three';
 import useKeyboard from '@/hooks/useKeyboard';
 
-export default function Rotator({ children }:{children: ReactNode}) {
+export default function Rotator({ children, speed }:{ children: ReactNode, speed: number }) {
   const orbitor = useRef<Group>(null!);
 
   const props = useSpring({
@@ -18,7 +18,7 @@ export default function Rotator({ children }:{children: ReactNode}) {
   })
 
   useFrame(({ clock }) => {
-    orbitor.current.rotation.y = clock.getElapsedTime();
+    orbitor.current.rotation.y = clock.getElapsedTime() * speed;
   })
 
   return (

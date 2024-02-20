@@ -1,14 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
-import { Fragment, MouseEventHandler, Suspense, useEffect, useState } from "react";
-import ThreeScene from "./Scene";
+import { Suspense, useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import cn from 'classnames';
 import { Canvas } from "@react-three/fiber";
-import { useProgress } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import { Overlay } from "./Overlay";
-import Scene from "./Scene";
-import Loader from "./Loader";
+import Scene from "./scenes/MapScene";
 import { useDrag } from "@use-gesture/react";
 
 const pages = [0, 1, 2];
@@ -32,6 +30,9 @@ const getPrevPage = (index: number) => {
 export default function MapTransition() {
   const [slideOff, setSlideOff] = useState(false);
   const [page, setPage] = useState(0);
+  const [isInActiveModal, setIsInActiveModal] = useState(false);
+
+
   // const { progress } = useProgress();
   const simulateKeyDownEvent = (key: string) => {
     const simulatedEvent = new KeyboardEvent('keydown', { key });
@@ -40,7 +41,8 @@ export default function MapTransition() {
   };
 
   const handleKeyboard = (event: KeyboardEvent) => {
-    if ((event.defaultPrevented || event.repeat) && slideOff) {
+    console.log("inDialog? ", isInActiveModal);
+    if ((event.defaultPrevented || event.repeat || isInActiveModal) || slideOff) {
       return;
     }
 
@@ -73,7 +75,7 @@ export default function MapTransition() {
   }
 
   const bind = useDrag(({ down, movement: [mx] }) => {
-    const threshold = 10;
+    const threshold = 50;
 
     if (!down) {
       if (mx < -threshold) {
@@ -85,11 +87,11 @@ export default function MapTransition() {
   });
 
   return (
-    <main className="w-screen h-screen touch-none">
+    <main className="w-screen h-screen touch-none overflow-hidden relative">
       <Transition
         show={!slideOff}
         enter="duration-[1500ms] ease-in-out"
-        enterFrom="md:-translate-x-[200%] translate-y-[200%]"
+        enterFrom="md:-translate-x-[200%] md:translate-y-0 translate-y-[200%]"
         enterTo="translate-x-0 translate-y-0"
         leave="duration-[1500ms] ease-in-out"
         leaveFrom="translate-x-0 translate-y-0"
@@ -105,7 +107,7 @@ export default function MapTransition() {
         </button>
 
         <svg xmlns="http://www.w3.org/2000/svg" className="absolute md:hidden w-screen h-auto bottom-[99%] left-0 z-10" width="392" height="114" viewBox="0 0 392 114" fill="none">
-          <path d="M205.812 58.2445C105.491 72.1834 26.8034 25.2227 0 0V114H392C371.738 89.607 306.133 44.3057 205.812 58.2445Z" fill="white"/>
+          <path className="dark:fill-zinc-900" d="M205.812 58.2445C105.491 72.1834 26.8034 25.2227 0 0V114H392C371.738 89.607 306.133 44.3057 205.812 58.2445Z" fill="white"/>
         </svg>  
         <svg className="absolute hidden md:block md:h-screen md:w-auto md:top-0 md:left-full z-10" width="690" height="1024" viewBox="0 0 690 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path className="dark:fill-zinc-900" d="M0 0H55.7784C37.7021 112.729 124.469 364.508 372.889 497.598C621.31 630.689 330.022 872.039 690 1024H0V0Z" fill="white"/>
@@ -115,9 +117,18 @@ export default function MapTransition() {
         "bg-gradient-to-br from-indigo-950 to-slate-950 w-full h-screen absolute top-0 left-0 touch-none": true,
       })} {...bind()}>
         <Canvas shadows flat>
+          <Stars
+            radius={750} // Radius of the inner sphere (default=100)
+            depth={2000} // Depth of area where stars should fit (default=50)
+            count={5000} // Amount of stars (default=5000)
+            factor={4} // Size factor (default=4)
+            saturation={0} // Saturation 0-1 (default=0)
+            fade // Faded dots (default=false)
+          />
+          
           <Suspense fallback={null}><Scene navigate={[page, setPage]} /></Suspense>
         </Canvas>
-        <Overlay navigator={[page, setPage]} slider={[slideOff, setSlideOff]} />
+        <Overlay navigator={[page, setPage]} slider={[slideOff, setSlideOff]} dialog={[isInActiveModal, setIsInActiveModal]} />
       </div>
     </main>
   )
