@@ -2,6 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useRef, useState } from "react";
 import AboutMeScene from "../scenes/AboutMeScene";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import ResumeExperience from "../ResumeExperience";
 
 type AboutMeProps = {
   open: boolean;
@@ -68,14 +69,16 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       enterFrom="opacity-0 translate-y-full"
                       enterTo="opacity-100 translate-y-0"
                     >
+                      <h1 className="sr-only">Welcome!</h1>
                       <p className="">
-                      I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development. At the moment, I work at Artists for Humanity as a web developer, focusing on crafting practical and user-friendly projects. My creativity extends to designing interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser and the mobile implementation of our 2022 Annual Report. Growing in the evolving world of web development is my goal, and so I employ various technologies to enhance my skills, such as:
+                      I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development. Growing in the evolving world of web development is my goal, and so I employ various technologies to enhance my skills, such as:
                       </p>
                       <div className="relative my-4">
-                      <button className="ring-2 py-4 px-3 w-full rounded-md flex items-center gap-2 flex-nowrap ring-zinc-200/60 before:ring-2 before:ring-zinc-200/10 before:rounded-md before:w-full before:h-full before:absolute before:top-0 before:left-0 before:hover:top-2 before:hover:left-2 before:transition-all before:ease-out transition hover:ring-violet-400 active:translate-y-1 before:active:top-1 before:active:left-1" ref={button}>
-                        <kbd className="p-2 rounded-md ring-2 ring-zinc-200/30 text-zinc-200/30 w-8 h-8 inline-flex items-center justify-center">S</kbd> <span>My Skills</span>
-                      </button>
+                        <button className="ring-2 py-4 px-3 w-full rounded-md flex items-center gap-4 flex-nowrap ring-zinc-200/60 before:ring-2 before:ring-zinc-200/10 before:rounded-md before:w-full before:h-full before:absolute before:top-0 before:left-0 before:hover:top-2 before:hover:left-2 before:transition-all before:ease-out transition hover:ring-violet-400 active:translate-y-1 before:active:top-1 before:active:left-1" ref={button}>
+                          <kbd className="p-2 rounded-md ring-2 ring-zinc-200/30 text-zinc-200/30 w-8 h-8 inline-flex items-center justify-center text-xl font-semibold">S</kbd> <span>My Skills</span>
+                        </button>
                       </div>
+                      <ResumeExperience />
                     </Transition.Child>
                   </div>
                 </div>
