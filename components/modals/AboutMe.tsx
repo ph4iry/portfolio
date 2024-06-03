@@ -46,7 +46,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
               leaveTo="opacity-0 scale-50"
             >
               <Dialog.Panel className="w-full max-w-[80vw] min-h-[70vh] max-h-[90vh] transform overflow-hidden rounded-2xl bg-[#210547]/60 backdrop-blur-md shadow-xl transition-all flex flex-col-reverse md:flex-row relative">
-                <div className="md:w-1/2 bg-black/30 text-slate-300 text-left py-4 px-7">
+                <div className="text-slate-300 text-left py-4 px-7">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-[500ms] delay-[3000ms]"
@@ -81,9 +81,6 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       <ResumeExperience />
                     </Transition.Child>
                   </div>
-                </div>
-                <div className="md:w-1/2">
-                  <AboutMeScene button={button}/>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

@@ -6,7 +6,7 @@ import cn from 'classnames';
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import { Overlay } from "./Overlay";
-import Scene from "./scenes/MapScene";
+import MapScene from "./scenes/MapScene";
 import { useDrag } from "@use-gesture/react";
 
 const pages = [0, 1, 2];
@@ -126,7 +126,7 @@ export default function MapTransition() {
             fade // Faded dots (default=false)
           />
           
-          <Suspense fallback={null}><Scene navigate={[page, setPage]} /></Suspense>
+          <Suspense fallback={null}><MapScene navigate={[page, setPage]} /></Suspense>
         </Canvas>
         <Overlay navigator={[page, setPage]} slider={[slideOff, setSlideOff]} dialog={[isInActiveModal, setIsInActiveModal]} />
       </div>
