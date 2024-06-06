@@ -3,6 +3,7 @@ import { Dispatch, Fragment, SetStateAction, useRef, useState } from "react";
 import AboutMeScene from "../scenes/AboutMeScene";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import ResumeExperience from "../ResumeExperience";
+import Image from 'next/image';
 
 type AboutMeProps = {
   open: boolean;
@@ -45,7 +46,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-50"
             >
-              <Dialog.Panel className="w-full max-w-[80vw] min-h-[70vh] max-h-[90vh] transform overflow-hidden rounded-2xl bg-[#210547]/60 backdrop-blur-md shadow-xl transition-all flex flex-col-reverse md:flex-row relative">
+              <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#110326]/80 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
                 <div className="text-slate-300 text-left py-4 px-7">
                   <Transition.Child
                     as={Fragment}
@@ -81,6 +82,9 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       <ResumeExperience />
                     </Transition.Child>
                   </div>
+                </div>
+                <div className="absolute md:bottom-[175px] md:right-[-20vw] right-[-20vh] opacity-75 bottom-1/2 z-[-1] max-h-[30vh]">
+                  <Image src="/about-planet.png" alt="" width={1364} height={877} sizes='100vw' className="h-full w-auto" />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
