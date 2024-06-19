@@ -3,7 +3,7 @@ import '@/styles/stars.css';
 import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from "react";
 import AboutMeScene from "../scenes/AboutMeScene";
-import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftCircleIcon, InformationCircleIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
 import classNames from "classnames";
@@ -20,8 +20,8 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
     {
       name: 'eDermis',
       description: 'A prototype of a machine learning app designed to target algorithmic bias in teledermatology',
-      repo: 'https://github.com/ph4iry/edermis',
-      link: 'https://edermis-ai.app',
+      repo: 'ph4iry/edermis',
+      link: 'edermis-ai.app',
       skills: ['Teachable Machine', 'Machine Learning', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
       image: 'https://github.com',
       awards: ['2024 Boston Public Schools STEAMFest, First Place'],
@@ -30,8 +30,8 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       name: 'Days of Service Journey',
       description: 'A collaborative gamified roadmap site for girls interested in breaking into tech through Hack Club\'s Days of Service Initiative',
       role: 'Lead Developer',
-      link: 'https://journey.daysofservice.hackclub.com/',
-      repo: 'https://github.com/hackclub/dos-journey',
+      link: 'journey.daysofservice.hackclub.com/',
+      repo: 'hackclub/dos-journey',
       image: 'https://github.com',
       skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
     },
@@ -39,8 +39,8 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       name: 'myBLA',
       description: 'An interactive student portal for the 1,700+ students attending Boston Latin Academy. Featured in the 2024-25 Course Selection showcases.',
       role: 'Lead Developer',
-      link: 'https://mybla.vercel.app',
-      repo: 'https://github.com/ph4iry/mybla',
+      link: 'mybla.vercel.app',
+      repo: 'ph4iry/mybla',
       image: 'https://github.com',
       skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS']
     },
@@ -98,16 +98,37 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     </button>
                   </Transition.Child>
                   <div className="flex gap-8 overflow-y-auto">
-                    <div className="w-full md:max-w-[67%] flex flex-col gap-4">
+                    <div className="w-full flex flex-col gap-4">
                       {projects.map((project, i) => (
-                        <div key={i} className="w-full flex border-2 border-white/80 rounded-md transition hover:scale-105">
+                        <div key={i} className="flex border-2 border-white/80 rounded-md transition">
                           <div className="w-24 shrink-0 bg-zinc-400 rounded-l-md h-full"></div>
                           <div className="p-4">
                             <div className="text-xl font-bold">{project.name}</div>
                             <div className="text-sm italic">{project.description}</div>
+                            <div className="flex gap-4 mt-3">
+                              <div className="flex gap-2 p-2 rounded bg-white/5">
+                                <LinkIcon className="h-6" />
+                                {project.link}
+                              </div>
+                              <div className="flex gap-2 p-2 rounded bg-white/5">
+                                <InformationCircleIcon className="h-6" />
+                                {project.repo}
+                              </div>
+                            </div>
+                            {
+                              project.awards && (
+                                <div className="mt-3 flex gap-2 p-2 rounded bg-white/5">
+                                  <TrophyIcon className="h-6" />
+                                  <span className='italic'>{project.awards.join(', ')}</span>
+                                </div>
+                              )
+                            }
                           </div>
                         </div>
                       ))}
+                    </div>
+                    <div className="w-full">
+                      i can put a carousel of the results of some of these projects here?
                     </div>
                   </div>
                 </div>
