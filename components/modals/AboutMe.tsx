@@ -12,6 +12,9 @@ type AboutMeProps = {
 
 export default function AboutMe({ open, setOpen }: AboutMeProps) {
   const button = useRef(null!);
+  const skills = [
+    'React', 'NextJS', 'Typescript', 'Javascript', 'Java', 'Python', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 'Sass/SCSS', 'Github', 'Figma', 'NodeJS'
+  ];
 
   return (
     <Transition show={open}
@@ -35,16 +38,16 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-hidden">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-[500ms] delay-700"
-              enterFrom="opacity-0 translate-y-[10vh]"
-              enterTo="opacity-100 translate-y-0"
+              enterFrom="opacity-0 scale-110"
+              enterTo="opacity-100 scale-100"
               leave="ease-in duration-200"
               leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-50"
+              leaveTo="opacity-0 scale-110"
             >
               <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#110326]/80 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
                 <div className="text-slate-300 text-left py-4 px-7">
@@ -64,23 +67,47 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       <ArrowLeftCircleIcon className="h-8" /> Back to map
                     </button>
                   </Transition.Child>
-                  <div className="">
-                    <Transition.Child
-                      enter="ease-out duration-700 delay-[2000ms]"
-                      enterFrom="opacity-0 translate-y-full"
-                      enterTo="opacity-100 translate-y-0"
-                    >
-                      <h1 className="sr-only">Welcome!</h1>
-                      <p className="">
-                      I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development. Growing in the evolving world of web development is my goal, and so I employ various technologies to enhance my skills, such as:
-                      </p>
-                      <div className="relative my-4">
-                        <button className="ring-2 py-4 px-3 w-full rounded-md flex items-center gap-4 flex-nowrap ring-zinc-200/60 before:ring-2 before:ring-zinc-200/10 before:rounded-md before:w-full before:h-full before:absolute before:top-0 before:left-0 before:hover:top-2 before:hover:left-2 before:transition-all before:ease-out transition hover:ring-violet-400 active:translate-y-1 before:active:top-1 before:active:left-1" ref={button}>
-                          <kbd className="p-2 rounded-md ring-2 ring-zinc-200/30 text-zinc-200/30 w-8 h-8 inline-flex items-center justify-center text-xl font-semibold">S</kbd> <span>My Skills</span>
-                        </button>
-                      </div>
-                      <ResumeExperience />
-                    </Transition.Child>
+                  <div className="flex gap-8">
+                    <div className="w-full md:max-w-[50%]">
+                      <Transition.Child
+                        enter="ease-out duration-700 delay-[2000ms]"
+                        enterFrom="opacity-0 translate-y-20"
+                        enterTo="opacity-100 translate-y-0"
+                      >
+                        <h1 className="text-3xl font-bold mb-2">Welcome!</h1>
+                        <p className="mb-4">
+                        I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development.
+                        </p>
+                        <div className="flex gap-4 items-center my-4">
+                          <span className="whitespace-nowrap text-2xl font-semibold">My Skills</span>
+                          <span className="h-0.5 w-full bg-white/80"></span>
+                        </div>
+                        <div className="flex flex-row flex-wrap gap-3">
+                          {skills.map((skill: string, i: number) => (
+                            <div key={i} className="rounded-full py-2 px-4 border border-white/40 hover:border-white/80">{skill}</div>
+                          ))}
+                        </div>
+                        <div className="flex gap-4 items-center my-4">
+                          <span className="whitespace-nowrap text-2xl font-semibold">Work Experience</span>
+                          <span className="h-0.5 w-full bg-white/80"></span>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                          <ResumeExperience
+                            company={"Hack Club"}
+                            role={"Community Team & Summer Intern, Days of Service"}
+                            dates={"June 2024 - Present"}
+                            description={"I moderate the Hack Club Slack, a community of thousands of teen hackers. I also build projects to support Hack Club's Days of Service initiative to encourage more young girls to pursue technology fields."}                        
+                          />
+                          <ResumeExperience
+                            company={"Artists for Humanity"}
+                            role={"Web Developer & Teen Interviewer"}
+                            dates={"Oct 2022 - June 2024"}
+                            description={"I focus on crafting practical and user-friendly projects. My creativity extends to designing interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser and the mobile implementation of our 2022 Annual Report."}                        
+                          />
+                        </div>
+                      </Transition.Child>
+                    </div>
+                    <div className="md:w-full"></div>
                   </div>
                 </div>
                 <div className="absolute md:bottom-[175px] md:right-[-20vw] right-[-20vh] opacity-75 bottom-1/2 z-[-1] max-h-[30vh]">

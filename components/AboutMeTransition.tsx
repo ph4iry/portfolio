@@ -7,7 +7,6 @@ export default function AboutMeTransition() {
   const [section, setSection] = useState(0);
   return (
     <main className="h-screen bg-blue-400 w-screen">
-      
       <AboutMeScene section={section} />
     </main>
   )
