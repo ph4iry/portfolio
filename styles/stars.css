@@ -1,0 +1,26 @@
+@keyframes shoot {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-100vw, 100vh);
+  }
+}
+
+.animate-1 {
+  animation: shoot 1.5s forwards;
+}
+
+.animate-2 {
+  animation: shoot 3s forwards;
+}
+
+.animate-3 {
+  animation: shoot 4.5s forwards;
+}
+
+.shooting-star {
+  box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+}

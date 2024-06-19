@@ -1,9 +1,12 @@
+'use client';
+import '@/styles/stars.css';
 import { Dialog, Transition } from "@headlessui/react";
-import { Dispatch, Fragment, SetStateAction, useRef, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from "react";
 import AboutMeScene from "../scenes/AboutMeScene";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
+import classNames from "classnames";
 
 type AboutMeProps = {
   open: boolean;
@@ -13,8 +16,17 @@ type AboutMeProps = {
 export default function AboutMe({ open, setOpen }: AboutMeProps) {
   const button = useRef(null!);
   const skills = [
-    'React', 'NextJS', 'Typescript', 'Javascript', 'Java', 'Python', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 'Sass/SCSS', 'Github', 'Figma', 'NodeJS'
+    'React', 'NextJS', 'Typescript', 'Javascript', 'Java', 'Python', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 'Sass/SCSS', 'Github', 'Figma', 'NodeJS', 'React Three Fiber', 'ThreeJS', 'Spline'
   ];
+  const skillsThatBuiltThisSite = ['React', 'NextJS', 'Typescript', 'TailwindCSS', 'Github', 'Figma', 'React Three Fiber', 'ThreeJS', 'Spline'];
+
+  const [stars, setStars] = useState<{ top: number; right: number }[]>([]);
+
+  const handleClick = () => {
+    const top = Math.floor(Math.random() * (window.innerHeight / 2));
+    const right = 0;
+    setStars([...stars, { top, right }]);
+  };
 
   return (
     <Transition show={open}
@@ -68,7 +80,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     </button>
                   </Transition.Child>
                   <div className="flex gap-8">
-                    <div className="w-full md:max-w-[50%]">
+                    <div className="w-full md:max-w-[50%] overflow-y-auto">
                       <Transition.Child
                         enter="ease-out duration-700 delay-[2000ms]"
                         enterFrom="opacity-0 translate-y-20"
@@ -76,17 +88,26 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       >
                         <h1 className="text-3xl font-bold mb-2">Welcome!</h1>
                         <p className="mb-4">
-                        I&apos;m Phaedra Sanon, a high school junior with a profound passion for web development.
+                        I&apos;m Phaedra Sanon, a high school senior with a profound passion for web development.
                         </p>
                         <div className="flex gap-4 items-center my-4">
                           <span className="whitespace-nowrap text-2xl font-semibold">My Skills</span>
                           <span className="h-0.5 w-full bg-white/80"></span>
                         </div>
+                        <div className="flex gap-2 flex nowrap items-center text-sky-400/80 mb-2">
+                          <div className="h-2 w-2 rounded-full bg-sky-400/80"></div>
+                          <span>Powers this site</span>
+                        </div>
                         <div className="flex flex-row flex-wrap gap-3">
                           {skills.map((skill: string, i: number) => (
-                            <div key={i} className="rounded-full py-2 px-4 border border-white/40 hover:border-white/80">{skill}</div>
+                            <button key={i} onClick={handleClick} className={classNames({
+                              "rounded-full py-2 px-4 border-2 hover:cursor-pointer active:translate-y-1 transition": true,
+                              "border-sky-400/40 hover:border-sky-400/80": skillsThatBuiltThisSite.includes(skill),
+                              "border-white/40 hover:border-white/80": !skillsThatBuiltThisSite.includes(skill),
+                            })}>{skill}</button>
                           ))}
                         </div>
+                        <div className="italic text-sm mt-2">Hint: Click any of the skills listed for a cute surprise!</div>
                         <div className="flex gap-4 items-center my-4">
                           <span className="whitespace-nowrap text-2xl font-semibold">Work Experience</span>
                           <span className="h-0.5 w-full bg-white/80"></span>
@@ -107,7 +128,15 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                         </div>
                       </Transition.Child>
                     </div>
-                    <div className="md:w-full"></div>
+                    <div className="md:w-full overflow-hidden">
+                    {stars.map((star, index) => (
+                      <>
+                        <ShootingStar key={index + "A"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
+                        <ShootingStar key={index + "B"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
+                        <ShootingStar key={index + "C"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
+                      </>
+                    ))}
+                    </div>
                   </div>
                 </div>
                 <div className="absolute md:bottom-[175px] md:right-[-20vw] right-[-20vh] opacity-75 bottom-1/2 z-[-1] max-h-[30vh]">
@@ -120,4 +149,27 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       </Dialog>
     </Transition>
   )
+}
+
+function ShootingStar({ top, right }:{ top: number, right: number }) {
+  const starRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const star = starRef.current;
+    if (star) {
+      const speed = Math.ceil(Math.random() * 3)
+      star.classList.add(`animate-${speed}`);
+      setTimeout(() => {
+        star.classList.remove(`animate-${speed}`);
+      }, 1500 * speed);
+    }
+  }, []);
+
+  return (
+    <div
+      ref={starRef}
+      className="absolute w-[10px] h-[10px] bg-white rounded-full shooting-star opacity-0"
+      style={{ top, right }}
+    />
+  );
 }
