@@ -4,11 +4,12 @@ import { ArrowLeftCircleIcon, ArrowRightCircleIcon, ChevronRightIcon } from "@he
 import classNames from "classnames";
 import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect, useReducer, useState } from "react";
 import AboutMe from "./modals/AboutMe";
+import Projects from "./modals/Projects";
 import { useRouter } from "next/navigation";
 
 const pages: [string, string, `bg-${string}-${number}`, ((props: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>}) => JSX.Element)][] = [
   ['About', '/about', 'bg-indigo-800', AboutMe],
-  ['Projects', '/projects', 'bg-violet-400', AboutMe],
+  ['Projects', '/projects', 'bg-violet-400', Projects],
   ['Contact', '/contact', 'bg-violet-400', AboutMe]
 ]
 
@@ -29,6 +30,7 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
   return (
     <>
     <AboutMe open={currentPage === 0 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
+    <Projects open={currentPage === 1 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
     <div className="absolute top-0 h-20 w-screen text-white p-10">
       <div className="flex gap-8">
         <Transition
@@ -65,7 +67,7 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
                   enterFrom="translate-y-6"
                   enterTo="translate-y-0"
                 >
-                  <button className="block font-bold underline text-xl text-fuchsia-500" onClick={() => { setInDialog(true);setShowModal(true) }}>VISIT</button>
+                  <button className="block font-bold underline text-xl text-fuchsia-500" onClick={() => { setInDialog(true); setShowModal(true) }}>VISIT</button>
                 </Transition.Child>
               </Transition>
             </Fragment>

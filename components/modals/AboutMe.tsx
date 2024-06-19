@@ -62,7 +62,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
               leaveTo="opacity-0 scale-110"
             >
               <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#110326]/80 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
-                <div className="text-slate-300 text-left py-4 px-7">
+                <div className="text-slate-300 text-left py-4 px-7 overflow-y-auto overflow-x-hidden">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-[500ms] delay-[3000ms]"
@@ -79,8 +79,8 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       <ArrowLeftCircleIcon className="h-8" /> Back to map
                     </button>
                   </Transition.Child>
-                  <div className="flex gap-8">
-                    <div className="w-full md:max-w-[50%] overflow-y-auto">
+                  <div className="flex gap-8 overflow-y-auto">
+                    <div className="w-full md:max-w-[50%]">
                       <Transition.Child
                         enter="ease-out duration-700 delay-[2000ms]"
                         enterFrom="opacity-0 translate-y-20"
@@ -107,7 +107,6 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                             })}>{skill}</button>
                           ))}
                         </div>
-                        <div className="italic text-sm mt-2">Hint: Click any of the skills listed for a cute surprise!</div>
                         <div className="flex gap-4 items-center my-4">
                           <span className="whitespace-nowrap text-2xl font-semibold">Work Experience</span>
                           <span className="h-0.5 w-full bg-white/80"></span>
@@ -132,8 +131,8 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     {stars.map((star, index) => (
                       <>
                         <ShootingStar key={index + "A"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
-                        <ShootingStar key={index + "B"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
-                        <ShootingStar key={index + "C"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
+                        {/* <ShootingStar key={index + "B"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
+                        <ShootingStar key={index + "C"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} /> */}
                       </>
                     ))}
                     </div>
