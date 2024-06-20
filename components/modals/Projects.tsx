@@ -2,19 +2,18 @@
 import '@/styles/stars.css';
 import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from "react";
-import AboutMeScene from "../scenes/AboutMeScene";
 import { ArrowLeftCircleIcon, InformationCircleIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
 import classNames from "classnames";
 import ProjectCarousel from '../ProjectCarousel';
 
-type AboutMeProps = {
+type ProjectsProps = {
   open: boolean;
   setOpen: (b: boolean) => void;
 };
 
-export default function AboutMe({ open, setOpen }: AboutMeProps) {
+export default function Projects({ open, setOpen }: ProjectsProps) {
   const projects: {
     name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[], carousel: {
       image: string,
@@ -44,7 +43,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
       carousel: {
         image: '/projects.placeholder.svg',
-        description: ''
+        description: 'this is a description of dos journey that will go here probably after my internship'
       }
     },
     {
@@ -57,7 +56,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS'],
       carousel: {
         image: '/projects.placeholder.svg',
-        description: ''
+        description: 'this is a picture of it used during the assembly or something like that'
       }
     },
   ]
@@ -96,7 +95,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
               leaveTo="opacity-0 scale-110"
             >
               <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#110326]/80 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
-                <div className="text-slate-300 text-left py-4 px-7 overflow-y-auto overflow-x-hidden">
+                <div className="text-slate-300 text-left py-4 px-7 w-full overflow-y-auto overflow-x-hidden">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-[500ms] delay-[3000ms]"
@@ -114,7 +113,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     </button>
                   </Transition.Child>
                   <div className="flex gap-8 overflow-y-auto">
-                    <div className="w-1/2 flex flex-col gap-4">
+                    <div className="w-3/5 flex flex-col gap-4">
                       {projects.map((project, i) => (
                         <div key={i} className="flex border-2 border-white/80 rounded-md transition">
                           <div className="w-24 shrink-0 bg-zinc-400 rounded-l-md h-full"></div>
@@ -143,13 +142,13 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                         </div>
                       ))}
                     </div>
-                    <div className="w-1/2 grow-0">
+                    <div className="w-2/5 grow-0">
                       <ProjectCarousel data={projects} />
                     </div>
                   </div>
                 </div>
                 <div className="absolute md:bottom-[175px] md:right-[-20vw] right-[-20vh] opacity-75 bottom-1/2 z-[-1] max-h-[30vh]">
-                  <Image src="/about-planet.png" alt="" width={1364} height={877} sizes='100vw' className="h-full w-auto" />
+                  <Image src="/projects-planet.png" alt="" width={770} height={475} sizes='100vw' className="h-full w-auto" />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -160,25 +159,25 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
   )
 }
 
-function ShootingStar({ top, right }:{ top: number, right: number }) {
-  const starRef = useRef<HTMLDivElement>(null);
+// function ShootingStar({ top, right }:{ top: number, right: number }) {
+//   const starRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const star = starRef.current;
-    if (star) {
-      const speed = Math.ceil(Math.random() * 3)
-      star.classList.add(`animate-${speed}`);
-      setTimeout(() => {
-        star.classList.remove(`animate-${speed}`);
-      }, 1500 * speed);
-    }
-  }, []);
+//   useEffect(() => {
+//     const star = starRef.current;
+//     if (star) {
+//       const speed = Math.ceil(Math.random() * 3)
+//       star.classList.add(`animate-${speed}`);
+//       setTimeout(() => {
+//         star.classList.remove(`animate-${speed}`);
+//       }, 1500 * speed);
+//     }
+//   }, []);
 
-  return (
-    <div
-      ref={starRef}
-      className="absolute w-[10px] h-[10px] bg-white rounded-full shooting-star opacity-0"
-      style={{ top, right }}
-    />
-  );
-}
+//   return (
+//     <div
+//       ref={starRef}
+//       className="absolute w-[10px] h-[10px] bg-white rounded-full shooting-star opacity-0"
+//       style={{ top, right }}
+//     />
+//   );
+// }
