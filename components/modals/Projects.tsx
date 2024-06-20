@@ -16,7 +16,10 @@ type AboutMeProps = {
 
 export default function AboutMe({ open, setOpen }: AboutMeProps) {
   const projects: {
-    name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[]
+    name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[], carousel: {
+      image: string,
+      description: string,
+    },
   }[] = [
     {
       name: 'eDermis',
@@ -24,8 +27,12 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       repo: 'ph4iry/edermis',
       link: 'edermis-ai.app',
       skills: ['Teachable Machine', 'Machine Learning', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
-      image: 'https://github.com',
+      image: '/projects/placeholder.svg',
       awards: ['2024 Boston Public Schools STEAMFest, First Place'],
+      carousel: {
+        image: '/projects/placeholder.svg',
+        description: 'eDermis won first place at the Boston Public Schools STEAMFest.'
+      }
     },
     {
       name: 'Days of Service Journey',
@@ -33,8 +40,12 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       role: 'Lead Developer',
       link: 'journey.daysofservice.hackclub.com/',
       repo: 'hackclub/dos-journey',
-      image: 'https://github.com',
+      image: '/projects/placeholder.svg',
       skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
+      carousel: {
+        image: '/projects.placeholder.svg',
+        description: ''
+      }
     },
     {
       name: 'myBLA',
@@ -42,8 +53,12 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
       role: 'Lead Developer',
       link: 'mybla.vercel.app',
       repo: 'ph4iry/mybla',
-      image: 'https://github.com',
-      skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS']
+      image: '/projects/placeholder.svg',
+      skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS'],
+      carousel: {
+        image: '/projects.placeholder.svg',
+        description: ''
+      }
     },
   ]
 

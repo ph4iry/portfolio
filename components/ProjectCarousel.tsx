@@ -1,61 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useRef, useEffect } from 'react';
-import { Carousel } from '@material-tailwind/react';
 import Image from 'next/image'
+import { Carousel } from 'flowbite-react';
 // Data
 type carouselData = {
   name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[]
 }
 
 const ProjectCarousel = ({ data }:{ data: carouselData[] }) => {
-  const maxScrollWidth = useRef(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carousel = useRef<HTMLDivElement>(null!);
-
-  const movePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
-    }
-  };
-
-  const moveNext = () => {
-    if (
-      carousel.current !== null &&
-      carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
-    ) {
-      setCurrentIndex((prevState) => prevState + 1);
-    }
-  };
-
-  const isDisabled = (direction: 'prev' | 'next') => {
-    if (direction === 'prev') {
-      return currentIndex <= 0;
-    }
-
-    if (direction === 'next' && carousel.current !== null) {
-      return (
-        carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-      );
-    }
-
-    return false;
-  };
-
-  useEffect(() => {
-    if (carousel !== null && carousel.current !== null) {
-      carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
-    }
-  }, [currentIndex]);
-
-  useEffect(() => {
-    maxScrollWidth.current = carousel.current
-      ? carousel.current.scrollWidth - carousel.current.offsetWidth
-      : 0;
-  }, []);
-
   return (
-    <Carousel transition={{ duration: 2 }} className="rounded-xl" placeholder={null}>
-      {data.map((project, i) => (
+    <Carousel className="rounded-xl max-h-[40vh] w-full" slide indicators={false}>
+      <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+      <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+      <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+      <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+      <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+      {/* {data.map((project, i) => (
         <div key={i} className="relative h-full w-full">
           <Image
             width="100"
@@ -63,11 +23,11 @@ const ProjectCarousel = ({ data }:{ data: carouselData[] }) => {
             src={project.image}
             alt={project.description}
           />
-          <div className="absolute inset-0 flex flex-col p-4 justify-end">
+          <div className="absolute inset-0 h-full w-full flex flex-col p-4 justify-end">
             {project.description}
           </div>
         </div>
-      ))}
+      ))} */}
     </Carousel>
   );
 };
