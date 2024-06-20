@@ -7,6 +7,7 @@ import { ArrowLeftCircleIcon, InformationCircleIcon, LinkIcon, TrophyIcon } from
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
 import classNames from "classnames";
+import ProjectCarousel from '../ProjectCarousel';
 
 type AboutMeProps = {
   open: boolean;
@@ -98,7 +99,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     </button>
                   </Transition.Child>
                   <div className="flex gap-8 overflow-y-auto">
-                    <div className="w-full flex flex-col gap-4">
+                    <div className="w-1/2 flex flex-col gap-4">
                       {projects.map((project, i) => (
                         <div key={i} className="flex border-2 border-white/80 rounded-md transition">
                           <div className="w-24 shrink-0 bg-zinc-400 rounded-l-md h-full"></div>
@@ -127,8 +128,8 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                         </div>
                       ))}
                     </div>
-                    <div className="w-full">
-                      i can put a carousel of the results of some of these projects here?
+                    <div className="w-1/2 grow-0">
+                      <ProjectCarousel data={projects} />
                     </div>
                   </div>
                 </div>
