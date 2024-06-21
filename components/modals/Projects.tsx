@@ -59,7 +59,9 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
         description: 'this is a picture of it used during the assembly or something like that'
       }
     },
-  ]
+  ];
+
+  const modal = useRef<HTMLDivElement>(null!);
 
   return (
     <Transition show={open}
@@ -112,23 +114,23 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                       <ArrowLeftCircleIcon className="h-8" /> Back to map
                     </button>
                   </Transition.Child>
-                  <div className="flex flex-col-reverse md:flex-row gap-8 overflow-y-auto">
+                  <div className="flex flex-col-reverse md:flex-row gap-8 md:items-start overflow-y-auto">
                     <div className="md:w-[50%] flex flex-col gap-4">
                       {projects.map((project, i) => (
                         <div key={i} className="flex md:flex-row flex-col border-2 border-white/80 rounded-md transition">
-                          <div className="md:w-24 mdh-full h-24 w-full shrink-0 bg-zinc-400 md:rounded-l-md md:rounded-tr-none rounded-t-md h-full"></div>
+                          <div className="md:w-24 lg:w-48 md:h-full h-24 w-full shrink-0 bg-zinc-400 md:rounded-l-md md:rounded-tr-none rounded-t-md h-full">content</div>
                           <div className="p-4">
                             <div className="text-xl font-bold">{project.name}</div>
                             <div className="text-sm italic">{project.description}</div>
                             <div className="flex gap-4 mt-3 text-base flex-wrap">
-                              <div className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
+                              <a href={`https://${project.link}`} className="block flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
                                 <LinkIcon className="h-6" />
                                 {project.link}
-                              </div>
-                              <div className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
+                              </a>
+                              <a href={`https://github.com/${project.repo}`} className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
                                 <InformationCircleIcon className="h-6" />
                                 {project.repo}
-                              </div>
+                              </a>
                             </div>
                             {
                               project.awards && (
@@ -142,13 +144,13 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                         </div>
                       ))}
                     </div>
-                    <div className="md:w-[30%] grow-0">
+                    <div className="md:w-[50%] grow-0">
                       <ProjectCarousel data={projects} />
                     </div>
                   </div>
                 </div>
-                <div className="absolute md:bottom-[-100px] md:right-[-10vw] right-[-40vw] opacity-75 bottom-[-10vh]  z-[-1]">
-                  <Image src="/projects-planet.png" alt="" width={770} height={475} sizes='100vw' className="h-[30vh] w-auto aspect-[770/475] max-w-unset" />
+                <div className="absolute md:bottom-[-100px] md:right-[-10vw] right-[-40vw] opacity-75 bottom-[-30vh]  z-[-1]">
+                  <Image src="/projects-planet.png" alt="" width={770} height={475} sizes='100vw' className="h-[30vh] md:h-[70vh] w-auto aspect-[770/475] max-w-unset" />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
