@@ -41,8 +41,8 @@ export default function MapTransition() {
   };
 
   const handleKeyboard = (event: KeyboardEvent) => {
-    console.log("inDialog? ", isInActiveModal);
-    if ((event.defaultPrevented || event.repeat || isInActiveModal) || slideOff) {
+    // console.log("inDialog? ", isInActiveModal);
+    if ((event.defaultPrevented || event.repeat || isInActiveModal) || !slideOff) {
       return;
     }
 
@@ -79,9 +79,9 @@ export default function MapTransition() {
 
     if (!down) {
       if (mx < -threshold) {
-        simulateKeyDownEvent('ArrowLeft');
-      } else if (mx > threshold) {
         simulateKeyDownEvent('ArrowRight');
+      } else if (mx > threshold) {
+        simulateKeyDownEvent('ArrowLeft');
       }
     }
   });

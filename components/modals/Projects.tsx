@@ -37,7 +37,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
       name: 'Days of Service Journey',
       description: 'A collaborative gamified roadmap site for girls interested in breaking into tech through Hack Club\'s Days of Service Initiative',
       role: 'Lead Developer',
-      link: 'journey.daysofservice.hackclub.com/',
+      link: 'dos-journey.hackclub.com',
       repo: 'hackclub/dos-journey',
       image: '/projects/placeholder.svg',
       skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
@@ -94,7 +94,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-110"
             >
-              <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#110326]/80 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
+              <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#260808]/60 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
                 <div className="text-slate-300 text-left py-4 px-7 w-full overflow-y-auto overflow-x-hidden">
                   <Transition.Child
                     as={Fragment}
@@ -112,20 +112,20 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                       <ArrowLeftCircleIcon className="h-8" /> Back to map
                     </button>
                   </Transition.Child>
-                  <div className="flex gap-8 overflow-y-auto">
-                    <div className="w-3/5 flex flex-col gap-4">
+                  <div className="flex flex-col-reverse md:flex-row gap-8 overflow-y-auto">
+                    <div className="md:w-[50%] flex flex-col gap-4">
                       {projects.map((project, i) => (
-                        <div key={i} className="flex border-2 border-white/80 rounded-md transition">
-                          <div className="w-24 shrink-0 bg-zinc-400 rounded-l-md h-full"></div>
+                        <div key={i} className="flex md:flex-row flex-col border-2 border-white/80 rounded-md transition">
+                          <div className="md:w-24 mdh-full h-24 w-full shrink-0 bg-zinc-400 md:rounded-l-md md:rounded-tr-none rounded-t-md h-full"></div>
                           <div className="p-4">
                             <div className="text-xl font-bold">{project.name}</div>
                             <div className="text-sm italic">{project.description}</div>
-                            <div className="flex gap-4 mt-3">
-                              <div className="flex gap-2 p-2 rounded bg-white/5">
+                            <div className="flex gap-4 mt-3 text-base flex-wrap">
+                              <div className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
                                 <LinkIcon className="h-6" />
                                 {project.link}
                               </div>
-                              <div className="flex gap-2 p-2 rounded bg-white/5">
+                              <div className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
                                 <InformationCircleIcon className="h-6" />
                                 {project.repo}
                               </div>
@@ -142,13 +142,13 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                         </div>
                       ))}
                     </div>
-                    <div className="w-2/5 grow-0">
+                    <div className="md:w-[30%] grow-0">
                       <ProjectCarousel data={projects} />
                     </div>
                   </div>
                 </div>
-                <div className="absolute md:bottom-[175px] md:right-[-20vw] right-[-20vh] opacity-75 bottom-1/2 z-[-1] max-h-[30vh]">
-                  <Image src="/projects-planet.png" alt="" width={770} height={475} sizes='100vw' className="h-full w-auto" />
+                <div className="absolute md:bottom-[-100px] md:right-[-10vw] right-[-40vw] opacity-75 bottom-[-10vh]  z-[-1]">
+                  <Image src="/projects-planet.png" alt="" width={770} height={475} sizes='100vw' className="h-[30vh] w-auto aspect-[770/475] max-w-unset" />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

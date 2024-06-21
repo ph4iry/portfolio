@@ -23,7 +23,7 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
 
   useEffect(() => {
     setInDialog(showModal);
-    console.log(showModal, inDialog);
+    // console.log(showModal, inDialog);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showModal]);
 
