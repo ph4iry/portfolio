@@ -36,6 +36,20 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
       display: true,
     },
     {
+      name: 'OdistAI',
+      description: 'A prototype of a Notion-like text editor powered by GPT 3.5',
+      repo: 'Artists-for-Humanity/OdistAI',
+      link: 'odist-ai.app',
+      skills: ['AI', 'Frontend Development', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
+      image: '/projects/odistai.png',
+      // awards: ['2024 Boston Public Schools STEAMFest, First Place'],
+      carousel: {
+        image: '/projects/placeholder.svg',
+        description: 'OdistAI was featured at the 2023 Artists for Humanity Big Summa Show'
+      },
+      display: true,
+    },
+    {
       name: 'Days of Service Journey',
       description: 'A collaborative gamified roadmap site for girls interested in breaking into tech through Hack Club\'s Days of Service Initiative',
       role: 'Lead Developer',
@@ -119,7 +133,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                     </button>
                   </Transition.Child>
                   <div className="text-2xl font-bold mb-2">My Projects</div>
-                  <div className="flex flex-col-reverse md:flex-row gap-8 md:items-start overflow-y-auto">
+                  <div className="md:max-w-[80vw] flex flex-col-reverse md:flex-row gap-8 md:items-start overflow-y-auto">
                     <div className="md:w-[50%] flex flex-col gap-4 overflow-y-auto" style={{
                       maxHeight: 'calc(90vh - 9rem)'
                     }}>

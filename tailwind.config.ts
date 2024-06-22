@@ -17,6 +17,7 @@ const config: Config = {
       },
     },
   },
+  darkMode: 'media',
   plugins: [
     flowbite.plugin(),
   ],

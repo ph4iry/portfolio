@@ -1,9 +1,9 @@
 'use client';
 import React, { ReactNode, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useSpring, animated, SpringValues, SpringValue } from '@react-spring/three';
-import { Euler, Group } from 'three';
-import useKeyboard from '@/hooks/useKeyboard';
+import { useFrame } from '@react-three/fiber';
+import { useSpring } from '@react-spring/three';
+import { Group } from 'three';
+import { Hoverable } from './Hoverable';
 
 export default function Rotator({ children, speed }:{ children: ReactNode, speed: number }) {
   const orbitor = useRef<Group>(null!);
@@ -22,8 +22,10 @@ export default function Rotator({ children, speed }:{ children: ReactNode, speed
   })
 
   return (
-    <group rotation-y={props.planetRotation.get()}  ref={orbitor}>
-      {children}
-    </group>
+    <Hoverable>
+      <group rotation-y={props.planetRotation.get()}  ref={orbitor}>
+        {children}
+      </group>
+    </Hoverable>
   )
 }
