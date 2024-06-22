@@ -19,6 +19,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
       image: string,
       description: string,
     },
+    display: boolean,
   }[] = [
     {
       name: 'eDermis',
@@ -26,12 +27,13 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
       repo: 'ph4iry/edermis',
       link: 'edermis-ai.app',
       skills: ['Teachable Machine', 'Machine Learning', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
-      image: '/projects/placeholder.svg',
+      image: '/projects/edermis.png',
       awards: ['2024 Boston Public Schools STEAMFest, First Place'],
       carousel: {
         image: '/projects/placeholder.svg',
         description: 'eDermis won first place at the Boston Public Schools STEAMFest.'
-      }
+      },
+      display: true,
     },
     {
       name: 'Days of Service Journey',
@@ -44,7 +46,8 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
       carousel: {
         image: '/projects.placeholder.svg',
         description: 'this is a description of dos journey that will go here probably after my internship'
-      }
+      },
+      display: false,
     },
     {
       name: 'myBLA',
@@ -52,12 +55,13 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
       role: 'Lead Developer',
       link: 'mybla.vercel.app',
       repo: 'ph4iry/mybla',
-      image: '/projects/placeholder.svg',
+      image: '/projects/mybla.png',
       skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS'],
       carousel: {
         image: '/projects.placeholder.svg',
         description: 'this is a picture of it used during the assembly or something like that'
-      }
+      },
+      display: true,
     },
   ];
 
@@ -120,6 +124,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                       maxHeight: 'calc(90vh - 9rem)'
                     }}>
                       {projects.map((project, i) => (
+                        project.display &&
                         <div key={i} className="flex md:flex-row flex-col border-2 border-white/80 rounded-md transition">
                           <div className="md:w-24 lg:w-48 md:self-stretch md:min-h-full md:max-h-full min-h-24 w-full shrink-0 md:rounded-l-md md:rounded-tr-none rounded-t-md overflow-hidden"
                           >
