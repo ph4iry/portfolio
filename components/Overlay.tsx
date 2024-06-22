@@ -1,22 +1,20 @@
 'use client';
 import { Transition } from "@headlessui/react";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import classNames from "classnames";
 import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect, useReducer, useState } from "react";
 import AboutMe from "./modals/AboutMe";
 import Projects from "./modals/Projects";
 import { useRouter } from "next/navigation";
+import Contact from "./modals/Contact";
 
-const pages: [string, string, `bg-${string}-${number}`, ((props: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>}) => JSX.Element)][] = [
-  ['About', '/about', 'bg-indigo-800', AboutMe],
-  ['Projects', '/projects', 'bg-violet-400', Projects],
-  ['Contact', '/contact', 'bg-violet-400', AboutMe]
+const pages: [string, string, `text-${string}-${number}`, ((props: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>}) => JSX.Element)][] = [
+  ['About', '/about', 'text-indigo-400', AboutMe],
+  ['Projects', '/projects', 'text-rose-400', Projects],
+  ['Contact', '/contact', 'text-emerald-400', Contact]
 ]
 
 export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispatch<SetStateAction<number>>], slider: [boolean, Dispatch<SetStateAction<boolean>>], dialog: [boolean, Dispatch<SetStateAction<boolean>>] }) {
-  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [currentPage, setCurrentPage] = navigator;
   const [slideOff, setSlideOff] = slider;
   const [inDialog, setInDialog] = dialog;
@@ -31,6 +29,7 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
     <>
     <AboutMe open={currentPage === 0 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
     <Projects open={currentPage === 1 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
+    <Contact open={currentPage === 2 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
     <div className="absolute top-0 h-20 w-screen text-white p-10">
       <div className="flex gap-8">
         <Transition
@@ -67,7 +66,7 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
                   enterFrom="translate-y-6"
                   enterTo="translate-y-0"
                 >
-                  <button className="block font-bold underline text-xl text-fuchsia-500" onClick={() => { setInDialog(true); setShowModal(true) }}>VISIT</button>
+                  <button className={`block font-bold underline text-xl ${page[2]}`} onClick={() => { setInDialog(true); setShowModal(true) }}>VISIT</button>
                 </Transition.Child>
               </Transition>
             </Fragment>

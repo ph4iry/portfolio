@@ -8,6 +8,7 @@ import { Stars } from "@react-three/drei";
 import { Overlay } from "./Overlay";
 import MapScene from "./scenes/MapScene";
 import { useDrag } from "@use-gesture/react";
+import Loader from "./Loader";
 
 const pages = [0, 1, 2];
 
@@ -28,10 +29,10 @@ const getPrevPage = (index: number) => {
 }
 
 export default function MapTransition() {
-  const [slideOff, setSlideOff] = useState(false);
+  const [introIsHidden, setIntroIsHidden] = useState(false);
   const [page, setPage] = useState(0);
   const [isInActiveModal, setIsInActiveModal] = useState(false);
-
+  const [start, setStart] = useState(false);
 
   // const { progress } = useProgress();
   const simulateKeyDownEvent = (key: string) => {
@@ -41,19 +42,18 @@ export default function MapTransition() {
   };
 
   const handleKeyboard = (event: KeyboardEvent) => {
-    // console.log("inDialog? ", isInActiveModal);
-    if ((event.defaultPrevented || event.repeat || isInActiveModal) || !slideOff) {
+    if ((event.defaultPrevented || event.repeat || isInActiveModal) || !introIsHidden) {
       return;
     }
 
     switch (event.key) {
       case "ArrowLeft":
         setPage(p => getPrevPage(p));
-        console.log("left key pressed");
+        // console.log("left key pressed");
         break;
       case "ArrowRight":
         setPage(p => getNextPage(p));
-        console.log("right key pressed");
+        // console.log("right key pressed");
         break;
       default:
         return;
@@ -63,15 +63,13 @@ export default function MapTransition() {
   }
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyboard);
+    window.addEventListener("keydown", (e) => handleKeyboard(e));
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyboard);
-    }
-  }, []);
+    return window.removeEventListener("keydown", (e) => handleKeyboard(e));
+  })
 
   const handleTransition = () => {
-    setSlideOff(true);
+    setIntroIsHidden(true);
   }
 
   const bind = useDrag(({ down, movement: [mx] }) => {
@@ -89,7 +87,7 @@ export default function MapTransition() {
   return (
     <main className="w-screen h-screen touch-none overflow-hidden relative">
       <Transition
-        show={!slideOff}
+        show={!introIsHidden}
         enter="duration-[1500ms] ease-in-out"
         enterFrom="md:-translate-x-[200%] md:translate-y-0 translate-y-[200%]"
         enterTo="translate-x-0 translate-y-0"
@@ -116,19 +114,24 @@ export default function MapTransition() {
       <div className={cn({
         "bg-gradient-to-br from-indigo-950 to-slate-950 w-full h-screen absolute top-0 left-0 touch-none": true,
       })} {...bind()}>
-        <Canvas shadows flat>
-          <Stars
-            radius={750} // Radius of the inner sphere (default=100)
-            depth={2000} // Depth of area where stars should fit (default=50)
-            count={5000} // Amount of stars (default=5000)
-            factor={4} // Size factor (default=4)
-            saturation={0} // Saturation 0-1 (default=0)
-            fade // Faded dots (default=false)
-          />
-          
-          <Suspense fallback={null}><MapScene navigate={[page, setPage]} /></Suspense>
-        </Canvas>
-        <Overlay navigator={[page, setPage]} slider={[slideOff, setSlideOff]} dialog={[isInActiveModal, setIsInActiveModal]} />
+        <Suspense fallback={null}>
+          <Canvas shadows flat>
+            <Stars
+              radius={750} // Radius of the inner sphere (default=100)
+              depth={2000} // Depth of area where stars should fit (default=50)
+              count={5000} // Amount of stars (default=5000)
+              factor={4} // Size factor (default=4)
+              saturation={0} // Saturation 0-1 (default=0)
+              fade // Faded dots (default=false)
+            />
+            
+            <Suspense fallback={null}>
+              <MapScene navigate={[page, setPage]} />
+            </Suspense>
+          </Canvas>
+          <Overlay navigator={[page, setPage]} slider={[introIsHidden, setIntroIsHidden]} dialog={[isInActiveModal, setIsInActiveModal]} />
+        </Suspense>
+        <Loader started={start} onStarted={() => setStart(true)} />
       </div>
     </main>
   )

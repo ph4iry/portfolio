@@ -47,7 +47,7 @@ export default function Contact({ open, setOpen }: ContactProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-110"
             >
-              <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#260808]/60 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
+              <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-emerald-900/60 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
                 <div className="text-slate-300 text-left py-4 px-7 w-full overflow-y-auto overflow-x-hidden">
                   <Transition.Child
                     as={Fragment}

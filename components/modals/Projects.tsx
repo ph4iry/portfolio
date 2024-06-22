@@ -13,74 +13,72 @@ type ProjectsProps = {
   setOpen: (b: boolean) => void;
 };
 
-export default function Projects({ open, setOpen }: ProjectsProps) {
-  const projects: {
-    name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[], carousel: {
-      image: string,
-      description: string,
-    },
-    display: boolean,
-  }[] = [
-    {
-      name: 'eDermis',
-      description: 'A prototype of a machine learning app designed to target algorithmic bias in teledermatology',
-      repo: 'ph4iry/edermis',
-      link: 'edermis-ai.app',
-      skills: ['Teachable Machine', 'Machine Learning', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
-      image: '/projects/edermis.png',
-      awards: ['2024 Boston Public Schools STEAMFest, First Place'],
-      carousel: {
-        image: '/projects/placeholder.svg',
-        description: 'eDermis won first place at the Boston Public Schools STEAMFest.'
-      },
-      display: true,
-    },
-    {
-      name: 'OdistAI',
-      description: 'A prototype of a Notion-like text editor powered by GPT 3.5',
-      repo: 'Artists-for-Humanity/OdistAI',
-      link: 'odist-ai.app',
-      skills: ['AI', 'Frontend Development', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
-      image: '/projects/odistai.png',
-      // awards: ['2024 Boston Public Schools STEAMFest, First Place'],
-      carousel: {
-        image: '/projects/placeholder.svg',
-        description: 'OdistAI was featured at the 2023 Artists for Humanity Big Summa Show'
-      },
-      display: true,
-    },
-    {
-      name: 'Days of Service Journey',
-      description: 'A collaborative gamified roadmap site for girls interested in breaking into tech through Hack Club\'s Days of Service Initiative',
-      role: 'Lead Developer',
-      link: 'dos-journey.hackclub.com',
-      repo: 'hackclub/dos-journey',
+const projects: {
+  name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[], carousel: {
+    image: string,
+    description: string,
+  },
+  display: boolean,
+}[] = [
+  {
+    name: 'eDermis',
+    description: 'A prototype of a machine learning app designed to target algorithmic bias in teledermatology',
+    repo: 'ph4iry/edermis',
+    link: 'edermis-ai.app',
+    skills: ['Teachable Machine', 'Machine Learning', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
+    image: '/projects/edermis.png',
+    awards: ['2024 Boston Public Schools STEAMFest, First Place'],
+    carousel: {
       image: '/projects/placeholder.svg',
-      skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
-      carousel: {
-        image: '/projects.placeholder.svg',
-        description: 'this is a description of dos journey that will go here probably after my internship'
-      },
-      display: false,
+      description: 'eDermis won first place at the Boston Public Schools STEAMFest.'
     },
-    {
-      name: 'myBLA',
-      description: 'An interactive student portal for the 1,700+ students attending Boston Latin Academy. Featured in the 2024-25 Course Selection showcases.',
-      role: 'Lead Developer',
-      link: 'mybla.vercel.app',
-      repo: 'ph4iry/mybla',
-      image: '/projects/mybla.png',
-      skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS'],
-      carousel: {
-        image: '/projects.placeholder.svg',
-        description: 'this is a picture of it used during the assembly or something like that'
-      },
-      display: true,
+    display: true,
+  },
+  {
+    name: 'OdistAI',
+    description: 'A prototype of a Notion-like text editor powered by GPT 3.5',
+    repo: 'Artists-for-Humanity/OdistAI',
+    link: 'odist-ai.app',
+    skills: ['AI', 'Frontend Development', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
+    image: '/projects/odistai.png',
+    // awards: ['2024 Boston Public Schools STEAMFest, First Place'],
+    carousel: {
+      image: '/projects/placeholder.svg',
+      description: 'OdistAI was featured at the 2023 Artists for Humanity Big Summa Show'
     },
-  ];
+    display: true,
+  },
+  {
+    name: 'Days of Service Journey',
+    description: 'A collaborative gamified roadmap site for girls interested in breaking into tech through Hack Club\'s Days of Service Initiative',
+    role: 'Lead Developer',
+    link: 'dos-journey.hackclub.com',
+    repo: 'hackclub/dos-journey',
+    image: '/projects/placeholder.svg',
+    skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
+    carousel: {
+      image: '/projects.placeholder.svg',
+      description: 'this is a description of dos journey that will go here probably after my internship'
+    },
+    display: false,
+  },
+  {
+    name: 'myBLA',
+    description: 'An interactive student portal for the 1,700+ students attending Boston Latin Academy. Featured in the 2024-25 Course Selection showcases.',
+    role: 'Lead Developer',
+    link: 'mybla.vercel.app',
+    repo: 'ph4iry/mybla',
+    image: '/projects/mybla.png',
+    skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS'],
+    carousel: {
+      image: '/projects.placeholder.svg',
+      description: 'this is a picture of it used during the assembly or something like that'
+    },
+    display: true,
+  },
+];
 
-  const modal = useRef<HTMLDivElement>(null!);
-
+export default function Projects({ open, setOpen }: ProjectsProps) {
   return (
     <Transition show={open}
       enter="transition-opacity duration-75"

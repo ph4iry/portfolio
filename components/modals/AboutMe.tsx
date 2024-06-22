@@ -1,8 +1,7 @@
 'use client';
 import '@/styles/stars.css';
 import { Dialog, Transition } from "@headlessui/react";
-import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from "react";
-import AboutMeScene from "../scenes/AboutMeScene";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
@@ -14,7 +13,6 @@ type AboutMeProps = {
 };
 
 export default function AboutMe({ open, setOpen }: AboutMeProps) {
-  const button = useRef(null!);
   const skills = [
     'React', 'NextJS', 'Typescript', 'Javascript', 'Java', 'Python', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 'Sass/SCSS', 'Github', 'Figma', 'NodeJS', 'React Three Fiber', 'ThreeJS', 'Spline'
   ];
@@ -71,6 +69,7 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                       onKeyDown={(e) => {
                         if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
                           e.preventDefault();
+                          return;
                         }
                       }}
                       tabIndex={0}
@@ -131,8 +130,6 @@ export default function AboutMe({ open, setOpen }: AboutMeProps) {
                     {stars.map((star, index) => (
                       <>
                         <ShootingStar key={index + "A"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
-                        {/* <ShootingStar key={index + "B"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} />
-                        <ShootingStar key={index + "C"} top={Math.floor(Math.random() * (window.innerHeight / 2))} right={0} /> */}
                       </>
                     ))}
                     </div>

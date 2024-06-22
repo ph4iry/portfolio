@@ -9,7 +9,7 @@ import SelectorManager from "../SelectorManager";
 export default function Scene({ navigate, ...props }: { navigate: [number, Dispatch<SetStateAction<number>>], props?: SceneProps}) {
   const { nodes, materials } = useSpline('https://prod.spline.design/gBTRwt2stFY6Q6HL/scene.splinecode');
 
-  console.log(nodes);
+  // console.log(nodes);
 
   return (
     <>

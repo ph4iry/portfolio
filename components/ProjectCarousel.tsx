@@ -8,6 +8,7 @@ type carouselData = {
     image: string,
     description: string,
   },
+  display: boolean,
 }
 
 const ProjectCarousel = ({ data }:{ data: carouselData[] }) => {
@@ -16,6 +17,7 @@ const ProjectCarousel = ({ data }:{ data: carouselData[] }) => {
       maxHeight: 'calc(90vh - 9rem)',
     }} slide indicators={false}>
       {data.map((project, i) => (
+        project.display &&
         <div key={i} className="w-full relative overflow-hidden rounded-xl">
           <Image
             width="100"
