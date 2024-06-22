@@ -2,7 +2,7 @@
 import '@/styles/stars.css';
 import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from "react";
-import { ArrowLeftCircleIcon, InformationCircleIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftCircleIcon, ArchiveBoxIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
 import classNames from "classnames";
@@ -114,11 +114,23 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                       <ArrowLeftCircleIcon className="h-8" /> Back to map
                     </button>
                   </Transition.Child>
+                  <div className="text-2xl font-bold mb-2">My Projects</div>
                   <div className="flex flex-col-reverse md:flex-row gap-8 md:items-start overflow-y-auto">
-                    <div className="md:w-[50%] flex flex-col gap-4">
+                    <div className="md:w-[50%] flex flex-col gap-4 overflow-y-auto" style={{
+                      maxHeight: 'calc(90vh - 9rem)'
+                    }}>
                       {projects.map((project, i) => (
                         <div key={i} className="flex md:flex-row flex-col border-2 border-white/80 rounded-md transition">
-                          <div className="md:w-24 lg:w-48 md:h-full h-24 w-full shrink-0 bg-zinc-400 md:rounded-l-md md:rounded-tr-none rounded-t-md h-full">content</div>
+                          <div className="md:w-24 lg:w-48 md:self-stretch md:min-h-full md:max-h-full min-h-24 w-full shrink-0 md:rounded-l-md md:rounded-tr-none rounded-t-md overflow-hidden"
+                          >
+                            <div className="transition min-h-[inherit] min-w-full hover:scale-125" style={{
+                              // objectFit: 'cover',
+                              backgroundImage: `url(${project.image})`,
+                              backgroundRepeat: 'no-repeat',
+                              backgroundPosition: 'center',
+                              backgroundSize: 'cover',
+                            }} />
+                          </div>
                           <div className="p-4">
                             <div className="text-xl font-bold">{project.name}</div>
                             <div className="text-sm italic">{project.description}</div>
@@ -128,7 +140,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                                 {project.link}
                               </a>
                               <a href={`https://github.com/${project.repo}`} className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
-                                <InformationCircleIcon className="h-6" />
+                                <ArchiveBoxIcon className="h-6" />
                                 {project.repo}
                               </a>
                             </div>
@@ -160,26 +172,3 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
     </Transition>
   )
 }
-
-// function ShootingStar({ top, right }:{ top: number, right: number }) {
-//   const starRef = useRef<HTMLDivElement>(null);
-
-//   useEffect(() => {
-//     const star = starRef.current;
-//     if (star) {
-//       const speed = Math.ceil(Math.random() * 3)
-//       star.classList.add(`animate-${speed}`);
-//       setTimeout(() => {
-//         star.classList.remove(`animate-${speed}`);
-//       }, 1500 * speed);
-//     }
-//   }, []);
-
-//   return (
-//     <div
-//       ref={starRef}
-//       className="absolute w-[10px] h-[10px] bg-white rounded-full shooting-star opacity-0"
-//       style={{ top, right }}
-//     />
-//   );
-// }

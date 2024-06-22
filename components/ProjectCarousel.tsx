@@ -13,7 +13,7 @@ type carouselData = {
 const ProjectCarousel = ({ data }:{ data: carouselData[] }) => {
   return (
     <Carousel className="rounded-xl aspect-square w-full overflow-hidden"  style={{
-      maxHeight: 'calc(90vh - 5rem)',
+      maxHeight: 'calc(90vh - 9rem)',
     }} slide indicators={false}>
       {data.map((project, i) => (
         <div key={i} className="w-full relative overflow-hidden rounded-xl">
