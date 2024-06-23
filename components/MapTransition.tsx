@@ -86,7 +86,7 @@ export default function MapTransition() {
 
   return (
     <main className="w-screen h-screen touch-none overflow-hidden relative">
-      <Transition
+      {start && <Transition
         show={!introIsHidden}
         enter="duration-[1500ms] ease-in-out"
         enterFrom="md:-translate-x-[200%] md:translate-y-0 translate-y-[200%]"
@@ -110,27 +110,25 @@ export default function MapTransition() {
         <svg className="absolute hidden md:block md:h-screen md:w-auto md:top-0 md:left-full z-10" width="690" height="1024" viewBox="0 0 690 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path className="dark:fill-zinc-900" d="M0 0H55.7784C37.7021 112.729 124.469 364.508 372.889 497.598C621.31 630.689 330.022 872.039 690 1024H0V0Z" fill="white"/>
         </svg>
-      </Transition>
+      </Transition>}
       <div className={cn({
         "bg-gradient-to-br from-indigo-950 to-slate-950 w-full h-screen absolute top-0 left-0 touch-none": true,
       })} {...bind()}>
-        <Suspense fallback={null}>
-          <Canvas shadows flat>
-            <Stars
-              radius={750} // Radius of the inner sphere (default=100)
-              depth={2000} // Depth of area where stars should fit (default=50)
-              count={5000} // Amount of stars (default=5000)
-              factor={4} // Size factor (default=4)
-              saturation={0} // Saturation 0-1 (default=0)
-              fade // Faded dots (default=false)
-            />
-            
-            <Suspense fallback={null}>
-              <MapScene navigate={[page, setPage]} />
-            </Suspense>
-          </Canvas>
-          <Overlay navigator={[page, setPage]} slider={[introIsHidden, setIntroIsHidden]} dialog={[isInActiveModal, setIsInActiveModal]} />
-        </Suspense>
+        <Canvas shadows flat>
+          <Stars
+            radius={750} // Radius of the inner sphere (default=100)
+            depth={2000} // Depth of area where stars should fit (default=50)
+            count={5000} // Amount of stars (default=5000)
+            factor={4} // Size factor (default=4)
+            saturation={0} // Saturation 0-1 (default=0)
+            fade // Faded dots (default=false)
+          />
+          
+          <Suspense fallback={null}>
+            <MapScene navigate={[page, setPage]} />
+          </Suspense>
+        </Canvas>
+        {start && <Overlay navigator={[page, setPage]} slider={[introIsHidden, setIntroIsHidden]} dialog={[isInActiveModal, setIsInActiveModal]} />}
         <Loader started={start} onStarted={() => setStart(true)} />
       </div>
     </main>
