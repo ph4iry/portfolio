@@ -174,7 +174,7 @@ export default function Projects({ open, setOpen }: ProjectsProps) {
                       ))}
                     </div>
                     <div className="md:w-[50%] grow-0">
-                      <ProjectCarousel data={projects} />
+                      {/* <ProjectCarousel data={projects} /> */}
                     </div>
                   </div>
                 </div>

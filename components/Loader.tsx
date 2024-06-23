@@ -44,7 +44,7 @@ export default function Loader({ started, onStarted }:{started: boolean, onStart
           >
             <button
               className='disabled:bg-red-400/30 bg-emerald-400 px-4 py-2 rounded-full' disabled={progress < 100}
-              onClick={() => setTimeout(() => onStarted(), 0) }
+              onClick={() => setTimeout(() => onStarted(), 1) }
             >
               Start
             </button>
