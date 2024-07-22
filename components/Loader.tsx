@@ -34,21 +34,14 @@ export default function Loader({ started, onStarted }:{started: boolean, onStart
         <div className='text-2xl font-bold italic'>
           Loading the Phaedraverse...
         </div>
-        <LoadingAnimation />
+        {/* <LoadingAnimation /> */}
         <div className='flex flex-col'>
-          <Transition
-            show={progress === 100}
-            enter="transition"
-            enterFrom="opacity-0 translate-y-6"
-            enterTo="opacity-100 translate-y-0"
+          <button
+            className='disabled:bg-red-400/30 border-2 border-white after:p-4 after:border-white/50 after:rounded-md hover:af px-8 py-4 rounded-md' disabled={progress < 100}
+            onClick={() => setTimeout(() => onStarted(), 1) }
           >
-            <button
-              className='disabled:bg-red-400/30 bg-emerald-400 px-4 py-2 rounded-full' disabled={progress < 100}
-              onClick={() => setTimeout(() => onStarted(), 1) }
-            >
-              Start
-            </button>
-          </Transition>
+            Start
+          </button>
         </div>
       </div>
     </Transition>
