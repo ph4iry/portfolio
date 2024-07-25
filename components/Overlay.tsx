@@ -1,14 +1,15 @@
 'use client';
 import { Transition } from "@headlessui/react";
-import { ArrowLeftCircleIcon, ArrowRightCircleIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { HiOutlineArrowLeftCircle, HiOutlineArrowRightCircle, HiChevronRight } from "react-icons/hi2";
 import { Dispatch, Fragment, ReactNode, SetStateAction, useEffect, useReducer, useState } from "react";
 import AboutMe from "./modals/AboutMe";
 import Projects from "./modals/Projects";
 import { useRouter } from "next/navigation";
 import Contact from "./modals/Contact";
+import { gloock, libre_caslon_display, victor_mono } from "@/app/fonts";
 
 const pages: [string, string, `text-${string}-${number}`, ((props: {open: boolean, setOpen: Dispatch<SetStateAction<boolean>>}) => JSX.Element)][] = [
-  ['About', '/about', 'text-indigo-400', AboutMe],
+  ['About', '/about', 'text-violet-400', AboutMe],
   ['Projects', '/projects', 'text-rose-400', Projects],
   ['Contact', '/contact', 'text-emerald-400', Contact]
 ]
@@ -19,18 +20,61 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
   const [slideOff, setSlideOff] = slider;
   const [inDialog, setInDialog] = dialog;
 
-  useEffect(() => {
-    setInDialog(showModal);
-    // console.log(showModal, inDialog);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showModal]);
+  // useEffect(() => {
+  //   console.log('hello')
+  //   setInDialog(showModal);
+
+  //   const handleKeyboard = (e: KeyboardEvent) => {
+  //     if (showModal) {
+  //       console.log('im not running this');
+  //     } else {
+  //       if (slideOff) return e.preventDefault();
+  //       if (e.key === 'ArrowLeft') {
+  //         setCurrentPage((p) => p - 1 < 0 ? pages.length - 1 : p - 1);
+  //       } else if (e.key === 'ArrowRight') {
+  //         setCurrentPage((p) => p + 1 > pages.length - 1 ? 0 : p + 1);
+  //       }
+  //     }
+  //     console.log('end');
+  //   }
+
+  //   window.addEventListener('keydown', (e: KeyboardEvent) => {
+  //     if (showModal) {
+  //       console.log('im not running this');
+  //     } else {
+  //       if (slideOff) return e.preventDefault();
+  //       if (e.key === 'ArrowLeft') {
+  //         setCurrentPage((p) => p - 1 < 0 ? pages.length - 1 : p - 1);
+  //       } else if (e.key === 'ArrowRight') {
+  //         setCurrentPage((p) => p + 1 > pages.length - 1 ? 0 : p + 1);
+  //       }
+  //     }
+  //     console.log('end');
+  //   });
+
+  //   return window.removeEventListener('keydown', (e: KeyboardEvent) => {
+  //     if (showModal) {
+  //       console.log('im not running this');
+  //     } else {
+  //       if (slideOff) return e.preventDefault();
+  //       if (e.key === 'ArrowLeft') {
+  //         setCurrentPage((p) => p - 1 < 0 ? pages.length - 1 : p - 1);
+  //       } else if (e.key === 'ArrowRight') {
+  //         setCurrentPage((p) => p + 1 > pages.length - 1 ? 0 : p + 1);
+  //       }
+  //     }
+  //     console.log('end');
+  //   });
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [showModal, slideOff]);
 
   return (
     <>
     <AboutMe open={currentPage === 0 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
     <Projects open={currentPage === 1 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
     <Contact open={currentPage === 2 && showModal} setOpen={(b: boolean) => {setShowModal(b); setInDialog(b) } } />
-    <div className="absolute top-0 h-20 w-screen text-white p-10">
+    <div className="fixed inset-0 touch-none pointer-events-none" />
+    <div className="fixed top-0 h-20 w-screen text-white p-10 z-10">
       <div className="flex gap-8">
         <Transition
           show={slideOff}
@@ -41,12 +85,12 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <button className="flex gap-2 hover:gap-4 transition-all text-lg" onClick={() => setSlideOff(false)}>Go back <ChevronRightIcon className="h-6" /></button>
+          <button className="flex gap-2 hover:gap-4 transition-all text-lg" onClick={() => setSlideOff(!slideOff)}>Go back <HiChevronRight className="h-6" /></button>
         </Transition>
         
       </div>
     </div>
-      <div className="absolute bottom-0 w-screen h-[30vh]">
+      <div className="fixed bottom-0 w-screen h-[30vh] z-0">
         {
           pages.map((page, i) => (
             <Fragment key={i}>
@@ -60,13 +104,13 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <h1 className="font-bold text-3xl text-white">{page[0]}</h1>
+                <h1 className={`text-3xl text-white ${gloock.className}`}>{page[0].toLowerCase()} </h1>
                 <Transition.Child
                   enter="transition-transform duration-400 delay-400"
                   enterFrom="translate-y-6"
                   enterTo="translate-y-0"
                 >
-                  <button className={`block font-bold underline text-xl ${page[2]}`} onClick={() => { setInDialog(true); setShowModal(true) }}>VISIT</button>
+                  <button className={`block underline text-lg uppercase ${page[2]} ${victor_mono.className}`} onClick={() => { setInDialog(true); setShowModal(true) }}>visit</button>
                 </Transition.Child>
               </Transition>
             </Fragment>
@@ -81,18 +125,18 @@ export function Overlay({ navigator, slider, dialog }: {navigator:[number, Dispa
         leave="transition-all duration-750"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="absolute bottom-[10%] text-white/50 text-base md:text-base xl:text-lg w-screen flex justify-center"
+        className="fixed bottom-[10%] text-white/50 text-base md:text-base xl:text-lg w-screen flex justify-center"
       >
-        <div className="hidden md:flex gap-2 items-center">Press 
+        <div className={`hidden md:flex gap-2 items-center uppercase text-base ${victor_mono.className}`}>Press 
           <kbd className="inline-flex">
-            <ArrowLeftCircleIcon className="h-6" />
+            <HiOutlineArrowLeftCircle className="h-6" />
             <span className="sr-only">left arrow key</span>
           </kbd>
 
           or
 
           <kbd className="inline-flex">
-            <ArrowRightCircleIcon className="h-6"/>
+            <HiOutlineArrowRightCircle className="h-6"/>
             <span className="sr-only">right arrow key</span>
           </kbd>
 

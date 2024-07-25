@@ -6,22 +6,27 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   background: #f0f0f0;
 }
+
+:root {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  @apply bg-gradient-to-br from-indigo-950 to-slate-950;
+}
+:root::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 
 canvas {
   width: 100%;
   height: auto;
   overflow: hidden;
   aspect-ratio: 1280 / 800;
+}
+
+.modal-content * {
+  @apply overflow-y-visible;
 }

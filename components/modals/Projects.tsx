@@ -2,11 +2,16 @@
 import '@/styles/stars.css';
 import { Dialog, Transition } from "@headlessui/react";
 import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from "react";
-import { ArrowLeftCircleIcon, ArchiveBoxIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import { HiOutlineArrowLeftCircle, HiOutlineArchiveBox, HiOutlineLink, HiOutlineTrophy } from "react-icons/hi2";
 import ResumeExperience from "../ResumeExperience";
 import Image from 'next/image';
 import classNames from "classnames";
 import ProjectCarousel from '../ProjectCarousel';
+import LenisScroll from '../LenisScroll';
+import { victor_mono } from '@/app/fonts';
+import InteractivePhoto from '../InteractivePhoto';
+import { FaMedal } from 'react-icons/fa6';
+import MiniScroll from '../MiniScroll';
 
 type ProjectsProps = {
   open: boolean;
@@ -14,178 +19,145 @@ type ProjectsProps = {
 };
 
 const projects: {
-  name: string, link: string, repo: string, description: string, skills: string[], image: string, role?: string, awards?: string[], carousel: {
-    image: string,
-    description: string,
-  },
-  display: boolean,
+  name: string, link?: string, repo: string, description: string, color: string, skills: string[], image: string, role?: string, awards?: string[]
 }[] = [
   {
     name: 'eDermis',
     description: 'A prototype of a machine learning app designed to target algorithmic bias in teledermatology',
     repo: 'ph4iry/edermis',
-    link: 'edermis-ai.app',
+    role: 'Lead Developer',
+    color: 'text-rose-100',
     skills: ['Teachable Machine', 'Machine Learning', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
     image: '/projects/edermis.png',
     awards: ['2024 Boston Public Schools STEAMFest, First Place'],
-    carousel: {
-      image: '/projects/placeholder.svg',
-      description: 'eDermis won first place at the Boston Public Schools STEAMFest.'
-    },
-    display: true,
   },
   {
     name: 'OdistAI',
     description: 'A prototype of a Notion-like text editor powered by GPT 3.5',
     repo: 'Artists-for-Humanity/OdistAI',
-    link: 'odist-ai.app',
+    color: 'text-slate-100',
+    role: 'Frontend Developer',
     skills: ['AI', 'Frontend Development', 'React', 'Javascript', 'TailwindCSS', 'Figma'],
-    image: '/projects/odistai.png',
-    // awards: ['2024 Boston Public Schools STEAMFest, First Place'],
-    carousel: {
-      image: '/projects/placeholder.svg',
-      description: 'OdistAI was featured at the 2023 Artists for Humanity Big Summa Show'
-    },
-    display: true,
-  },
-  {
-    name: 'Days of Service Journey',
-    description: 'A collaborative gamified roadmap site for girls interested in breaking into tech through Hack Club\'s Days of Service Initiative',
-    role: 'Lead Developer',
-    link: 'dos-journey.hackclub.com',
-    repo: 'hackclub/dos-journey',
-    image: '/projects/placeholder.svg',
-    skills: ['NextJS', 'React', 'MDX', 'Typescript', 'Figma'],
-    carousel: {
-      image: '/projects.placeholder.svg',
-      description: 'this is a description of dos journey that will go here probably after my internship'
-    },
-    display: false,
+    image: '/projects/odistai.png'
   },
   {
     name: 'myBLA',
     description: 'An interactive student portal for the 1,700+ students attending Boston Latin Academy. Featured in the 2024-25 Course Selection showcases.',
     role: 'Lead Developer',
-    link: 'mybla.vercel.app',
+    link: 'https://mybla.app',
     repo: 'ph4iry/mybla',
     image: '/projects/mybla.png',
-    skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS'],
-    carousel: {
-      image: '/projects.placeholder.svg',
-      description: 'this is a picture of it used during the assembly or something like that'
-    },
-    display: true,
+    color: 'text-sky-100',
+    skills: ['NextJS', 'React', 'Typescript', 'MDX', 'Figma', 'TailwindCSS']
+  },
+  {
+    name: 'bla-aspen',
+    description: 'An API library to interact with the Boston Latin Academy\'s (in Boston Public Schools) version of Aspen (SIS) by Follett',
+    role: 'Lead Developer',
+    link: 'https://npmjs.com/package/bla-aspen',
+    repo: 'ph4iry/aspen',
+    image: '/projects/bla-aspen.png',
+    color: 'text-emerald-100',
+    skills: ['Web Scraping', 'Typescript', 'NodeJS', 'Puppeteer']
+  },
+  {
+    name: 'AFH Side Quests',
+    description: 'A printable generator for side quests at Artists for Humanity, which are redeemable tasks for teens to earn tokens and rewards',
+    role: 'Lead Developer',
+    link: 'https://afh-side-quests.vercel.app/',
+    repo: 'ph4iry/afh-side-quests',
+    image: '/projects/afh-side-quests.png',
+    color: 'text-amber-100',
+    skills: ['Web Scraping', 'Typescript', 'NodeJS', 'Puppeteer']
   },
 ];
 
 export default function Projects({ open, setOpen }: ProjectsProps) {
   return (
-    <Transition show={open}
-      enter="transition-opacity duration-75"
-      enterFrom="opacity-0"
-      enterTo="opacity-100"
-      leave="transition-opacity duration-150"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0"
-    >
-      <Dialog as="div" className="relative z-10 w-full" onClose={() => setOpen(false)}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+    <div className={open && "absolute top-0 z-50 min-h-screen min-w-[100vh]" || ''}>
+      <>
+        <Transition show={open}
+          enter="transition duration-75"
+          enterFrom="opacity-0 scale-125"
+          enterTo="opacity-100 scale-100"
+          leave="transition duration-125"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-125"
         >
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" />
-        </Transition.Child>
-
-        <div className="fixed inset-0 overflow-hidden">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="">
             <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-[500ms] delay-700"
+              as={'div'}
+              enter="fixed inset-0 z-50 ease-out duration-100"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="fixed inset-0 z-50 ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 w-screen h-screen backdrop-blur-md bg-[#330505]/25 z-[9998]"/>
+            </Transition.Child>
+
+            <Transition.Child
+              as={'div'}
+              enter="absolute ease-out transition-opacity duration-[500ms] delay-[500ms] z-[9999]"
               enterFrom="opacity-0 scale-110"
               enterTo="opacity-100 scale-100"
               leave="ease-in duration-200"
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-110"
             >
-              <Dialog.Panel className="w-screen h-[90vh] transform overflow-hidden bg-[#260808]/60 backdrop-blur-md shadow-xl transition-all flex flex-col md:flex-row relative">
-                <div className="text-slate-300 text-left py-4 px-7 w-full overflow-y-auto overflow-x-hidden">
-                  <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-[500ms] delay-[3000ms]"
-                  >
-                    <button className="flex justify-start gap-2 text-lg items-center transition hover:text-white mb-4"
-                      onKeyDown={(e) => {
-                        if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-                          e.preventDefault();
-                        }
-                      }}
-                      tabIndex={0}
-                      onClick={() => setOpen(false)}
-                    >
-                      <ArrowLeftCircleIcon className="h-8" /> Back to map
-                    </button>
-                  </Transition.Child>
-                  <div className="text-2xl font-bold mb-2">My Projects</div>
-                  <div className="md:max-w-[80vw] flex flex-col-reverse md:flex-row gap-8 md:items-start overflow-y-auto">
-                    <div className="md:w-[50%] flex flex-col gap-4 overflow-y-auto" style={{
-                      maxHeight: 'calc(90vh - 9rem)'
-                    }}>
-                      {projects.map((project, i) => (
-                        project.display &&
-                        <div key={i} className="flex md:flex-row flex-col border-2 border-white/80 rounded-md transition">
-                          <div className="md:w-24 lg:w-48 md:self-stretch md:min-h-full md:max-h-full min-h-24 w-full shrink-0 md:rounded-l-md md:rounded-tr-none rounded-t-md overflow-hidden"
-                          >
-                            <div className="transition min-h-[inherit] min-w-full hover:scale-125" style={{
-                              // objectFit: 'cover',
-                              backgroundImage: `url(${project.image})`,
-                              backgroundRepeat: 'no-repeat',
-                              backgroundPosition: 'center',
-                              backgroundSize: 'cover',
-                            }} />
-                          </div>
-                          <div className="p-4">
-                            <div className="text-xl font-bold">{project.name}</div>
-                            <div className="text-sm italic">{project.description}</div>
-                            <div className="flex gap-4 mt-3 text-base flex-wrap">
-                              <a href={`https://${project.link}`} className="block flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
-                                <LinkIcon className="h-6" />
-                                {project.link}
-                              </a>
-                              <a href={`https://github.com/${project.repo}`} className="flex gap-2 p-2 rounded bg-white/5 flex-nowrap w-full whitespace-nowrap">
-                                <ArchiveBoxIcon className="h-6" />
-                                {project.repo}
-                              </a>
-                            </div>
-                            {
-                              project.awards && (
-                                <div className="mt-3 flex gap-2 p-2 rounded bg-white/5">
-                                  <TrophyIcon className="h-6" />
-                                  <span className='italic'>{project.awards.join(', ')}</span>
+              <div className="modal-content min-h-[450vh] p-4 z-[9999] absolute top-0 left-0">
+                <MiniScroll setOpen={setOpen} />
+                <div className="w-screen h-[400vh] transform shadow-xl transition-all">
+                  <div className="h-full text-slate-300 text-left md:py-10 md:px-10 relative">
+                    <div className="flex justify-center gap-8 h-full">
+                      <div className="md:w-4/5 lg:w-3/5 pr-6 py-20 overflow-visible absolute top-0">
+                        <h1 className={`text-base italic text-slate-400 font-normal mb-4 border-b border-dashed border-slate-400 pb-2 ${victor_mono.className}`}>projects</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+                          {projects.map((project, i) => (
+                            <div key={i} className="md:grid md:grid-cols-subgrid col-span-3 flex flex-col">
+                              <div className="col-span-1 flex flex-col-reverse md:flex-col">
+                                <span className={"text-xl my-6"}>{project.name}</span>
+                                <InteractivePhoto photo={project.image} sizing="h-[25vh] aspect-square" />
+                              </div>
+                              <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
+                                <div className="text-xl">{project.description}</div>
+                                <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
+                                  <div className="col-span-1 md:col-span-2">
+                                    <div className={`text-xs text-slate-400 uppercase ${victor_mono.className}`}>github</div>
+                                    <a href={`https://github.com/${project.repo}`} className={`text-xs ${project.color} hover:text-white ${victor_mono.className}`}>{project.repo}</a>
+                                  </div>
+                                  <div>
+                                    <div className={`text-xs text-slate-400 uppercase ${victor_mono.className}`}>built with:</div>
+                                    <div className={`text-xs ${project.color} ${victor_mono.className}`}>{project.skills.join(', ')}</div>
+                                  </div>
+                                  <div>
+                                    <div className={`text-xs text-slate-400 uppercase ${victor_mono.className}`}>role:</div>
+                                    <div className={`text-xs ${project.color} ${victor_mono.className}`}>{project.role}</div>
+                                  </div>
                                 </div>
-                              )
-                            }
-                          </div>
+                                {project.awards && (
+                                  <div>
+                                    {project.awards.map((award, i) => (
+                                      <div key={i} className="text-white flex gap-2 flex-nowrap items-center">
+                                        <FaMedal /> {award}
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                    <div className="md:w-[50%] grow-0">
-                      {/* <ProjectCarousel data={projects} /> */}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="absolute md:bottom-[-100px] md:right-[-10vw] right-[-40vw] opacity-75 bottom-[-30vh]  z-[-1]">
-                  <Image src="/projects-planet.png" alt="" width={770} height={475} sizes='100vw' className="h-[30vh] md:h-[70vh] w-auto aspect-[770/475] max-w-unset" />
-                </div>
-              </Dialog.Panel>
+              </div>
             </Transition.Child>
           </div>
-        </div>
-      </Dialog>
-    </Transition>
+        </Transition>
+      </>
+    </div>
   )
 }
