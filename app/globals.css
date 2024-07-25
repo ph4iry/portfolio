@@ -2,152 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- Container for the orbiting circles animation ---------- */
-#circle-orbit-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 35vh;
-  overflow: visible;
+* {
+  box-sizing: border-box;
 }
 
-#planet-navs {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 70vh;
-
-  .nav-planet:nth-child(1) { --nth-child: 1 }
-  .nav-planet:nth-child(2) { --nth-child: 2 }
-  .nav-planet:nth-child(3) { --nth-child: 3 }
+body {
+  background: #f0f0f0;
 }
 
-.nav-planet {
-  right:0;
-  top:0;
-  height: 100vh;
-  position:absolute;
-  text-align:center;
-  display:flex;
-  transform: rotateZ(calc(-45deg * var(--nth-child)));
-}
-
-.planet-nav-img {
-  transform: rotateZ(calc(45deg * var(--nth-child)));
-}
-
-.planet {
-  position: relative;
-  width: 60vh;
-  max-width: 60vh;
-  height: 60vh;
-  top: 0;
-  left: 50%;
-}
-
-.classic-orbit {
-  animation: classic-spin 10s linear infinite;
-}
-.orbit {
-  animation: spin 10s linear infinite;
-}
-
-.hover-spin:hover {
-  animation: spin 10s linear infinite;
-}
-
-.slide-up {
-  animation: 0.75s ease-out 0s 1 slide-up;
-}
-
-.delayed-slide-up {
-  animation: 1.25s ease-out 0s 1 delayed-slide-up;
-}
-
-.slide-left {
-  animation: 1.5s ease-in-out 0s 1 slide-left;
-}
-
-.planet-fade {
-  animation: 1.75s ease-in-out 0s 1 planet-fade-in;
-}
-
-@keyframes spin {
-  from {
-    transform:rotate(calc(45deg * var(--nth-child)));
-  }
-  to {
-    transform:rotate(calc(360deg + 45deg * var(--nth-child)));
-  }
-}
-
-@keyframes classic-spin {
-  from {
-    transform:rotate(calc(45deg));
-  }
-  to {
-    transform:rotate(calc(360deg + 45deg));
-  }
-}
-
-@keyframes slide-up {
-  0% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes delayed-slide-up {
-  0%, 40% {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-left {
-  0%, 60% {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes planet-fade-in {
-  0%, 80% {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    pointer-events: auto;
-    transform: scale(1);
-  }
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
+:root {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
+  @apply bg-gradient-to-br from-indigo-950 to-slate-950;
+}
+:root::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+
+canvas {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  aspect-ratio: 1280 / 800;
+}
+
+.modal-content * {
+  @apply overflow-y-visible;
 }
