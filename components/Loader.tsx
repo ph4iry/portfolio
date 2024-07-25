@@ -7,9 +7,7 @@ export default function Loader({ started, onStarted }:{started: boolean, onStart
   const { progress } = useProgress()
 
   useEffect(() => {
-    let interval
-
-    interval = setInterval(() => {
+    let interval = setInterval(() => {
       console.log(`Progress: ${progress}%`)
     }, 1000);
 
