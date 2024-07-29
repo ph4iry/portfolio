@@ -118,7 +118,7 @@ export default function MapTransition() {
   
 
   return (
-    <main className="w-screen lg:min-h-[250vh] md:min-h-[300vh] min-h-[450vh] h-full touch-none overflow-hidden relative">
+    <main className="w-screen lg:min-h-[250vh] md:min-h-[300vh] min-h-[450vh] h-full overflow-hidden relative">
       <LenisScroll inModal={isInActiveModal}>        
         <div className="w-screen h-screen relative inset-0">
         <div className="absolute right-0 text-white">{introIsHidden}</div>
@@ -134,8 +134,8 @@ export default function MapTransition() {
             className={"bottom-0 fixed transition-all md:inset-0 z-10 md:w-1/2 md:h-screen h-1/2 bg-white dark:bg-zinc-900 flex flex-col justify-start md:justify-center px-10 md:px-24 gap-6 overflow-visible"}
           >
             <div className={`dark:text-zinc-200 text-black ${gloock.className}`}>
-              <h1 className="text-5xl md:text-7xl ">Hi! I&apos;m Phaedra.</h1>
-              <p className={`text-lg md:text-2xl ${victor_mono.className}`}>I&apos;m a 17 year old <span className="text-purple-500">web developer</span> from Boston, MA.</p>
+              <h1 className="text-3xl md:text-7xl ">Hi! I&apos;m Phaedra.</h1>
+              <p className={`text-base md:text-2xl ${victor_mono.className}`}>I&apos;m a 17 year old <span className="text-purple-500">web developer</span> from Boston, MA.</p>
             </div>
             <button type="button" className={`md:text-xl underline underline-offset-4 decoration-wavy decoration-purple-500 italic py-1.5 w-fit hover:text-purple-500 delay-150 transition rounded-full text-white flex gap-1 items-center group ${victor_mono.className}`} onClick={() => handleTransition()}>
               explore <MdRocketLaunch className="group-hover:ml-3 group-hover:-translate-y-1 group-hover:translate-x-2 group-hover:scale-150 group-hover:text-purple-500 transition-all" />
