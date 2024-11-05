@@ -3,7 +3,7 @@ import React, { Dispatch, ReactNode, SetStateAction, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useSpring, animated, config, easings } from '@react-spring/three';
 import { motion } from 'framer-motion-3d';
-import { useState } from "react";
+import { useState } from 'react';
 import { Group } from 'three';
 
 export function RotationWrapper({ children, speed }: { children: ReactNode, speed: number }) {
@@ -18,7 +18,7 @@ export function RotationWrapper({ children, speed }: { children: ReactNode, spee
         }}
         transition={{
           repeat: Infinity, // Continuous looping
-          ease: "linear", // Smooth constant speed
+          ease: 'linear', // Smooth constant speed
           duration: speed, // Controls the speed of rotation
         }}
       >
@@ -46,7 +46,7 @@ function HoverableWrapper({
         scale: scaleValue,
       }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 10,
       }}

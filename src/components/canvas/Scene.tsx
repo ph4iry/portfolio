@@ -1,12 +1,12 @@
 'use client';
-import useSpline from "@splinetool/r3f-spline";
-import { Float, GradientTexture, MeshTransmissionMaterial, PerspectiveCamera } from "@react-three/drei";
-import { Dispatch, SetStateAction, useState } from "react";
-import { MaterialProps, SceneProps } from "@react-three/fiber";
+import useSpline from '@splinetool/r3f-spline';
+import { Float, GradientTexture, MeshTransmissionMaterial, PerspectiveCamera } from '@react-three/drei';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { MaterialProps, SceneProps } from '@react-three/fiber';
 import { RotationWrapper, LocationManager } from './PlanetWrappers';
 
-import { useEffect } from "react";
-import { Material, Vector2 } from "three";
+import { useEffect } from 'react';
+import { Material, Vector2 } from 'three';
 
 function SphereMesh({ nodes, materials }) {
   const [material, setMaterial] = useState(materials['Sphere2 Material']);
@@ -26,7 +26,7 @@ function SphereMesh({ nodes, materials }) {
     m.envMapIntensity = 1; // Boost environment map reflections if any are available
 
     setMaterial(material)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
