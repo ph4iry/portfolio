@@ -1,9 +1,45 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import AnimatedCursor from 'react-animated-cursor'
 import './globals.css'
 
-const base = Inter({ subsets: ['latin'] })
+import localFont from 'next/font/local';
+
+const inter = localFont({
+  src: [
+    {
+      path: './fonts/Inter.ttf',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Inter-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    }
+  ],
+  display: 'swap',
+  variable: '--font-inter'
+});
+
+const victor_mono = localFont({
+  src: [
+    {
+      path: './fonts/VictorMono.ttf',
+      style: 'normal',
+    },
+    {
+      path: './fonts/VictorMono-Italic.ttf',
+      style: 'italic',
+    }
+  ],
+  display: 'swap',
+  variable: '--font-vm'
+});
+
+const gloock = localFont({
+  src: './fonts/Gloock.ttf',
+  display: 'swap',
+  variable: '--font-gloock'
+})
+
 
 export const metadata: Metadata = {
   title: 'Welcome to the Phaedraverse',
@@ -16,21 +52,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="h-max">
-      <body className={`${base.className} lg:min-h-[250vh] md:min-h-[300vh] min-h-[450vh]`}>
-      <AnimatedCursor
-        innerSize={8}
-        outerSize={35}
-        innerScale={1}
-        outerScale={2}
-        outerAlpha={0}
-        innerStyle={{
-          backgroundColor: 'white',
-        }}
-        outerStyle={{
-          border: '3px solid rgba(255, 255, 255, 0.5)'
-        }}
-      />
+    <html lang="en" className={`max-h-lvh w-screen overflow-visible overscroll-none ${inter.variable} ${victor_mono.variable} ${gloock.variable}`}>
+      <body className={`font-inter`}>
+        {/* <AnimatedCursor
+          innerSize={8}
+          outerSize={35}
+          innerScale={1}
+          outerScale={2}
+          outerAlpha={0}
+          innerStyle={{
+            backgroundColor: 'white',
+          }}
+          outerStyle={{
+            border: '3px solid rgba(255, 255, 255, 0.5)'
+          }}
+        /> */}
         {children}
       </body>
     </html>
