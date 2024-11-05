@@ -53,7 +53,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`max-h-lvh w-screen overflow-visible overscroll-none ${inter.variable} ${victor_mono.variable} ${gloock.variable}`}>
-      <body className={`font-inter`}>
+      <body className={'font-inter'}>
         {/* <AnimatedCursor
           innerSize={8}
           outerSize={35}
