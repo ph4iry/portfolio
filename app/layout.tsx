@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 import localFont from 'next/font/local';
+import Head from './head';
 
 const inter = localFont({
   src: [
@@ -53,20 +54,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`max-h-lvh w-screen overflow-visible overscroll-none ${inter.variable} ${victor_mono.variable} ${gloock.variable}`}>
+      <Head />
       <body className={'font-inter'}>
-        {/* <AnimatedCursor
-          innerSize={8}
-          outerSize={35}
-          innerScale={1}
-          outerScale={2}
-          outerAlpha={0}
-          innerStyle={{
-            backgroundColor: 'white',
-          }}
-          outerStyle={{
-            border: '3px solid rgba(255, 255, 255, 0.5)'
-          }}
-        /> */}
         {children}
       </body>
     </html>
