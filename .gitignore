@@ -1,14 +1,5 @@
 # dependencies
 /node_modules
-<<<<<<< HEAD
-<<<<<<< HEAD
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-=======
->>>>>>> v4
-=======
->>>>>>> v4
 
 # testing
 /coverage
