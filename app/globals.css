@@ -8,16 +8,18 @@
 
 body {
   background: #f0f0f0;
+  @apply font-inter
 }
 
 :root {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  /* -ms-overflow-style: none;  Internet Explorer 10+ */
+  /* scrollbar-width: none;  Firefox */
   @apply bg-gradient-to-br from-indigo-950 to-slate-950;
 }
-:root::-webkit-scrollbar { 
+
+/* :root::-webkit-scrollbar { 
   display: none;  /* Safari and Chrome */
-}
+/* } */
 
 
 canvas {
@@ -29,4 +31,8 @@ canvas {
 
 .modal-content * {
   @apply overflow-y-visible;
+}
+
+.font-inter {
+  font-weight: 300;
 }
