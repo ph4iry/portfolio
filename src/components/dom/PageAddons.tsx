@@ -4,7 +4,6 @@ import { useRef, MouseEventHandler, useEffect, useState } from 'react';
 export function InteractivePhoto({ photo, sizing }: { photo: string, sizing?: string }) {
   let bounds: DOMRect;
   const inputRef = useRef<HTMLDivElement>(null!);
-  const [isOpen, setOpen] = useState(false);
 
   const rotateToMouse: MouseEventHandler<HTMLDivElement> = (e: any) => {
     if (innerWidth < 768) return;

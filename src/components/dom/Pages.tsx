@@ -6,8 +6,7 @@ import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2';
 import { MdRocket } from 'react-icons/md';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { SiReaddotcv } from 'react-icons/si';
-import { AiOutlineFileText } from 'react-icons/ai';
-import { Fragment, MutableRefObject, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { ReactLenis } from 'lenis/react';
 
 function ModalClose({ setOpen }: { setOpen: (b: boolean) => void }) {

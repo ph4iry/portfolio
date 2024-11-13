@@ -12,14 +12,14 @@ body {
 }
 
 :root {
-  /* -ms-overflow-style: none;  Internet Explorer 10+ */
-  /* scrollbar-width: none;  Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   @apply bg-gradient-to-br from-indigo-950 to-slate-950;
 }
 
-/* :root::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
-/* } */
+:root::-webkit-scrollbar { 
+  display: none;
+ }
 
 
 canvas {

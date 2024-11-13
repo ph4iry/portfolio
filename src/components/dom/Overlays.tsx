@@ -1,11 +1,10 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
-import { AnimatePresence, motion, Variant } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { HiMiniArrowLeftEndOnRectangle } from 'react-icons/hi2';
 import { MdRocketLaunch } from 'react-icons/md';
-import { HiOutlineArrowLeftCircle, HiOutlineArrowRightCircle, HiChevronRight } from 'react-icons/hi2';
-import { Dispatch, Fragment, ReactNode, SetStateAction, useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { Transition, TransitionChild } from '@headlessui/react';
+import { HiOutlineArrowLeftCircle, HiOutlineArrowRightCircle } from 'react-icons/hi2';
+import { Dispatch, Fragment, SetStateAction, useCallback, useEffect } from 'react';
 import { About, Projects, Contact } from './Pages';
 
 const pages: [string, string, `text-${string}-${number}`][] = [
@@ -20,7 +19,7 @@ export function WelcomeOverlay({ show, setShow }: { show: boolean, setShow: (sho
       <AnimatePresence>
         {show && (
           <motion.div
-            className="fixed inset-0 z-50 h-lvh w-screen bg-black/40 p-14 backdrop-blur-sm md:p-24"
+            className="fixed inset-0 z-50 h-lvh w-screen bg-black/40 p-8 backdrop-blur-sm sm:p-14 md:p-24"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -35,7 +34,7 @@ export function WelcomeOverlay({ show, setShow }: { show: boolean, setShow: (sho
               </button>
               <div className="bottom-24 right-24 mt-4 text-white/50 lg:fixed">
                 <div className="mt-3 text-sm italic">Fun fact, here&apos;s what I&apos;m listening to right now:</div>
-                <img src="https://spotify-github-profile.kittinanx.com/api/view?uid=p44gq4wrzz0qlhy8prpq99n3a&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=true&bar_color=53b14f&bar_color_cover=true" alt="" className="w-full md:max-w-[25vw]" />
+                <img src="https://spotify-github-profile.kittinanx.com/api/view?uid=p44gq4wrzz0qlhy8prpq99n3a&cover_image=true&theme=novatorem&show_offline=false&background_color=121212&interchange=true&bar_color=53b14f&bar_color_cover=true" alt="" className="mb-4 w-full md:max-w-[25vw]" />
                 <div className="text-sm">P.S. you should totally <a href="https://open.spotify.com/user/p44gq4wrzz0qlhy8prpq99n3a?si=1b0c3492295948fa" className="underline decoration-emerald-400 underline-offset-2">follow me on Spotify</a> &#58;&#41;</div>
               </div>
             </div>

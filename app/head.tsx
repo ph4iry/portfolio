@@ -1,12 +1,11 @@
-const title = 'Welcome to the Phaedraverse'
+const title = 'Phaedra\'s Space'
 const url = 'https://phaedras.space'
-const description = 'Phaedra Sanon\'s portfolio website'
+const description = 'Phaedra Sanon\'s portfolio website - a star garden, of sorts.'
 const author = 'Phaedra Sanon'
 
 export default function Head() {
   return (
     <>
-      {/* Recommended Meta Tags */}
       <meta charSet="utf-8" />
       <meta name="language" content="english" />
       <meta httpEquiv="content-type" content="text/html" />
@@ -14,7 +13,6 @@ export default function Head() {
       <meta name="designer" content={author} />
       <meta name="publisher" content={author} />
 
-      {/* Search Engine Optimization Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta
@@ -23,9 +21,7 @@ export default function Head() {
       />
       <meta name="robots" content="index,follow" />
       <meta name="distribution" content="web" />
-      {/* 
-      Facebook Open Graph meta tags
-        documentation: https://developers.facebook.com/docs/sharing/opengraph */}
+
       <meta property="og:title" content={title} />
       <meta property="og:type" content="site" />
       <meta property="og:url" content={url} />
@@ -37,9 +33,8 @@ export default function Head() {
       <link rel="apple-touch-icon" sizes="32x32" href="/icons/favicon-32x32.png" />
       <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
 
-      {/* Meta Tags for HTML pages on Mobile */}
-      {/* <meta name="format-detection" content="telephone=yes"/>
-        <meta name="HandheldFriendly" content="true"/>  */}
+      <meta name="format-detection" content="telephone=yes" />
+      <meta name="HandheldFriendly" content="true" />
       <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0" />
       <meta name="theme-color" content="#000" />
       <link rel="shortcut icon" href="/icons/apple-touch-icon.png" />

@@ -1,10 +1,8 @@
 'use client';
 import React, { Dispatch, ReactNode, SetStateAction, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { useSpring, animated, config, easings } from '@react-spring/three';
+import { easings } from '@react-spring/three';
 import { motion } from 'framer-motion-3d';
 import { useState } from 'react';
-import { Group } from 'three';
 
 export function RotationWrapper({ children, speed }: { children: ReactNode, speed: number }) {
   const orbitor = useRef(null!);

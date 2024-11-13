@@ -1,6 +1,6 @@
 'use client';
 import useSpline from '@splinetool/r3f-spline';
-import { Float, GradientTexture, MeshTransmissionMaterial, PerspectiveCamera } from '@react-three/drei';
+import { GradientTexture, MeshTransmissionMaterial, PerspectiveCamera } from '@react-three/drei';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { MaterialProps, SceneProps } from '@react-three/fiber';
 import { RotationWrapper, LocationManager } from './PlanetWrappers';
@@ -68,7 +68,6 @@ function Glass({ name, float = 300, color, configOverrides, ...props }) {
     temporalDistortion: 0,
     attenuationDistance: 0.5,
     attenuationColor: '#ffffff',
-    // color: '#ffffff',
   }
 
   return (
