@@ -82,7 +82,7 @@ export function About({ setOpen }) {
       company: 'Hack Club',
       roles: ['Summer Intern, Days of Service', 'Community Team'],
       dates: ['June 2024 - July 2024', 'May 2024 - Present'],
-      description: ['I moderate the Hack Club Slack, a community of over 30,000 of high school hackers building projects together.', 'I build projects to support Hack Club\'s Days of Service initiative to encourage more young girls to pursue technology fields.'],
+      description: ['I build projects to support Hack Club\'s Days of Service initiative to encourage more young girls to pursue technology fields.', 'I moderate the Hack Club Slack, a community of over 30,000 of high school hackers building projects together.'],
     },
     {
       company: 'Artists for Humanity',
