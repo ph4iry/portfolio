@@ -25,7 +25,7 @@ export function WelcomeOverlay({ show, setShow }: { show: boolean, setShow: (sho
             exit={{ opacity: 0 }}
           >
             <div className="flex h-full flex-col justify-center gap-4 text-white">
-              <div className={'!font-gloock text-black dark:text-zinc-200'}>
+              <div className={'!font-gloock text-zinc-200'}>
                 <h1 className="mb-3 text-5xl md:text-7xl">Hi! I&apos;m Phaedra.</h1>
                 <p className={'!font-vm md:text-2xl'}>I&apos;m a 17 year old <span className="text-purple-500">web developer</span> from Boston, MA.</p>
               </div>
