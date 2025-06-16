@@ -27,7 +27,7 @@ export function WelcomeOverlay({ show, setShow }: { show: boolean, setShow: (sho
             <div className="flex h-full flex-col justify-center gap-4 text-white">
               <div className={'!font-gloock text-zinc-200'}>
                 <h1 className="mb-3 text-5xl md:text-7xl">Hi! I&apos;m Phaedra.</h1>
-                <p className={'!font-vm md:text-2xl'}>I&apos;m a 17 year old <span className="text-purple-500">web developer</span> from Boston, MA.</p>
+                <p className={'!font-vm md:text-2xl'}>I&apos;m a 18 year old <span className="text-purple-500">web developer</span> from Boston, MA.</p>
               </div>
               <button type="button" className={'group flex w-fit items-center gap-1 rounded-full py-1.5 font-vm text-xl italic text-white underline decoration-purple-500 decoration-wavy underline-offset-4 transition hover:text-purple-500'} onClick={() => setShow(false)}>
                 explore <MdRocketLaunch className="transition group-hover:translate-x-2 group-hover:scale-150 group-hover:text-purple-500" />
