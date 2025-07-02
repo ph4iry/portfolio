@@ -77,51 +77,18 @@ export function About({ setOpen }) {
   ];
   const skillsThatBuiltThisSite = ['React', 'NextJS', 'Typescript', 'TailwindCSS', 'Github', 'Figma', 'React Three Fiber', 'ThreeJS', 'Spline', 'NodeJS'];
 
-  interface Role {
-    title: string,
-    dates: string,
-    description: string,
-  }
-
-  interface Experience {
-    company: string,
-    roles: Role[]
-  }
-  const workExperience: Experience[] = [
+  const workExperience = [
     {
       company: 'Hack Club',
-      roles: [
-        {
-          title: 'Athena Team Engineer',
-          dates: 'December 2024 - Present',
-          description: 'building awards.athena.hackclub.com (to empower 1000 girls and nonbinary teenagers to ship projects with hack club this year)',
-        },
-        {
-          title: 'Community Team',
-          dates: 'May 2024 - Present',
-          description: 'moderating an online community of over 60k teen hackers from around the world',
-        },
-        {
-          title: 'Athena Initiative Intern',
-          dates: 'June 2024 - July 2024',
-          description: 'co-organized a $50k gender-focused hackathon for girls and nonbinary teenagers in Los Angeles (and built the site for it: ascend.hackclub.com)',
-        },
-      ],
+      roles: ['Summer Intern, Days of Service', 'Community Team'],
+      dates: ['June 2024 - July 2024', 'May 2024 - Present'],
+      description: ['I build projects to support Hack Club\'s Days of Service initiative to encourage more young girls to pursue technology fields.', 'I moderate the Hack Club Slack, a community of over 30,000 of high school hackers building projects together.'],
     },
     {
       company: 'Artists for Humanity',
-      roles: [
-        {
-          title: 'Teen Interviewer',
-          dates: 'January 2022 - June 2024',
-          description: 'I interviewed teens to join the Artists for Humanity\'s school year and summer job programs.',
-        },
-        {
-          title: 'Web Developer',
-          dates: 'October 2022 - June 2025',
-          description: 'As a web developer, I designed interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser and the mobile implementation of the 2022 Annual Report.',
-        },
-      ],
+      roles: ['Teen Interviewer', 'Web Developer'],
+      dates: ['January 2022 - June 2024', 'October 2022 - Present'],
+      description: ['I interviewed teens to join the Artists for Humanity\'s school year and summer job programs.', 'As a web developer, I designed interactive displays and games, including the donation display showcased at the ARTOPIA fundraiser and the mobile implementation of the 2022 Annual Report.']
     },
   ];
   const content = useRef<HTMLDivElement>(null!);
@@ -134,13 +101,13 @@ export function About({ setOpen }) {
           <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.75, duration: 1, staggerChildren: 0.2 } }} ref={content} className="m-6 md:m-36">
             <ModalClose setOpen={setOpen} />
             <h1 className="sr-only">about me</h1>
-            <h2 className={'mb-4 border-b border-dashed border-slate-400 pb-2 font-gloock text-3xl font-normal text-slate-200'}>welcome to my digital spaceship.</h2>
+            <h2 className={'mb-4 border-b border-dashed border-slate-400 pb-2 font-vm text-xl font-normal italic text-slate-200'}>Hello traveler! Welcome to my digital spaceship.</h2>
             <div className="mb-8 space-y-4">
               <p>
-                I&apos;m Phaedra, a teenage web developer from Boston, Massachusetts. I love learning more ways to build immersive and aesthetically-pleasing sites, but have recently found a new interest in <span className="underline decoration-purple-400 decoration-wavy">computational linguistics</span>.
+                I&apos;m Phaedra, a 17 year old web developer from Boston, Massachusetts. I love learning more ways to build immersive and aesthetically-pleasing sites, but have recently found a new interest in <span className="underline decoration-purple-400 decoration-wavy">computational linguistics</span>.
               </p>
               <p>
-                At the moment, I build projects with <span className="underline decoration-purple-400 decoration-wavy">Hack Club</span>—a community of over 60,000 teen hackers from around the world building projects with technology. Learn more about me and get in contact so we can build something together!
+                At the moment, I build projects with <span className="underline decoration-purple-400 decoration-wavy">Hack Club</span>—a community of over 30,000 teen hackers from around the world building projects with technology. Learn more about me and get in contact so we can build something together!
               </p>
             </div>
             <h2 className="mb-4 mt-16 border-b border-dashed border-slate-400 pb-2 font-vm text-sm font-normal italic text-slate-400">my skills</h2>
@@ -163,9 +130,13 @@ export function About({ setOpen }) {
                 Find details about my work on:
               </div>
               <div className="flex flex-col justify-center gap-3 font-vm text-sm uppercase">
-                <a href="https://www.linkedin.com/in/phaedra-sanon/" className="flex items-center gap-2 text-slate-400 transition hover:text-slate-200">
+                <a href="/" className="flex items-center gap-2 text-slate-400 transition hover:text-slate-200">
                   <FaLinkedinIn />
                   <span >Linkedin</span>
+                </a>
+                <a href="/" className="flex items-center gap-2 text-slate-400 transition hover:text-slate-200">
+                  <SiReaddotcv />
+                  <span >Read.cv</span>
                 </a>
               </div>
             </div>
@@ -174,12 +145,12 @@ export function About({ setOpen }) {
                 <div key={i} className="grid grid-cols-subgrid py-4 md:col-span-2">
                   <span className="mb-2 text-xl">{job.company}</span>
                   <div className="flex flex-col gap-6">
-                    {job.roles.map((role, i) => (
+                    {new Array(job.roles.length).fill(0).map((_, i) => (
                       <div key={i}>
-                        <div className={'my-1 text-white'}>{role.title}</div>
-                        <div className="mb-2 flex flex-nowrap items-center gap-2 font-vm text-xs uppercase text-slate-400">{role.dates.split(' - ')[0]} <HiArrowLongRight /> {role.dates.split(' - ')[1]}</div>
+                        <div className={'my-1 font-vm text-xs uppercase text-slate-400'}>{job.roles[i]}</div>
+                        <div className="mb-2 flex flex-nowrap items-center gap-2">{job.dates[i].split(' - ')[0]} <HiArrowLongRight /> {job.dates[i].split(' - ')[1]}</div>
                         <div className="text-sm text-slate-300">
-                          <p>{role.description}</p>
+                          <p>{job.description[i]}</p>
                         </div>
                       </div>
                     ))}
@@ -194,8 +165,6 @@ export function About({ setOpen }) {
   )
 }
 
-
-// TODO: add ascend, athena award, sidus?, lyra?, lumen?
 export function Projects({ setOpen }) {
   const projects: {
     name: string, link?: string, repo: string, description: string, color: string, bg: string, skills: string[], images: string[], role?: string, awards?: string[]
@@ -243,6 +212,17 @@ export function Projects({ setOpen }) {
         bg: 'bg-emerald-950/50',
         skills: ['Web Scraping', 'Typescript', 'NodeJS', 'Puppeteer']
       },
+      // {
+      //   name: 'AFH Side Quests',
+      //   description: 'A printable generator for side quests at Artists for Humanity, which are redeemable tasks for teens to earn tokens and rewards',
+      //   role: 'Lead Developer',
+      //   link: 'https://afh-side-quests.vercel.app/',
+      //   repo: 'ph4iry/afh-side-quests',
+      //   images: ['/projects/afh-side-quests.png'],
+      //   color: 'text-amber-100',
+      //   bg: 'bg-amber-950/50',
+      //   skills: ['Web Scraping', 'Typescript', 'NodeJS', 'Puppeteer']
+      // },
     ];
 
   const [modalColor, setModalColor] = useState('bg-rose-950/50');
@@ -331,12 +311,12 @@ export function Contact({ setOpen }) {
             <h1 className={'mb-4 border-b border-dashed border-slate-400 pb-2 font-vm text-xl font-normal italic text-slate-200'}>contact me</h1>
             <div className="mb-8 space-y-4">
               <p>
-                thanks for visiting my celestial garden! 💫
+                Thanks for visiting my celestial garden! 💫
                 <br /><br />
                 Let&apos;s chat about music 🎵, AI/ML 🤖, or space 🪐! I&apos;m always looking for like-minded people, so let&apos;s connect! Here&apos;s where you can find me:
               </p>
             </div>
-            <div className="flex flex-col gap-4 divide-y divide-dashed divide-slate-600 overflow-visible text-white/60">
+            <div className="flex flex-col gap-4 divide-y divide-dashed divide-slate-600 overflow-visible">
               <div className="pt-4">
                 <div className="font-vm text-sm uppercase text-slate-400">linkedin</div>
                 <a href="https://www.linkedin.com/in/phaedra-sanon/" className="text-base transition hover:text-white" target="_blank" rel="noreferrer noopener" >linkedin.com/in/phaedra-sanon</a>
@@ -347,7 +327,7 @@ export function Contact({ setOpen }) {
               </div>
               <div className="pt-4">
                 <div className="font-vm text-sm uppercase text-slate-400">email</div>
-                <a href="mailto:sanon.p@northeastern.edu" className="text-base transition hover:text-white" target="_blank" rel="noreferrer noopener" >sanon.p [at] northeastern.edu</a>
+                <a href="mailto:phaedrasanon@gmail.com" className="text-base transition hover:text-white" target="_blank" rel="noreferrer noopener" >phaedrasanon@gmail.com</a>
               </div>
             </div>
           </motion.div>

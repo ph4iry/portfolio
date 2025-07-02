@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import localFont from 'next/font/local';
-import { Instrument_Serif } from 'next/font/google';
 import Head from './head';
 
 const inter = localFont({
@@ -40,13 +39,7 @@ const gloock = localFont({
   src: './fonts/Gloock.ttf',
   display: 'swap',
   variable: '--font-gloock'
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: '400',
-  variable: '--font-gloock',
-  subsets: ['latin']
-});
+})
 
 
 
@@ -61,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`max-h-lvh w-screen overflow-visible overscroll-none ${inter.variable} ${victor_mono.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`max-h-lvh w-screen overflow-visible overscroll-none ${inter.variable} ${victor_mono.variable} ${gloock.variable}`}>
       <Head />
       <body className={'font-inter'}>
         <Analytics />
